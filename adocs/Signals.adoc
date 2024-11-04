@@ -1,0 +1,110 @@
+== signals 簡介
+
+=== 什麼是signals
+
+Signal 是 Angular 16 引入的一種新的狀態管理機制，它提供了一種更細粒度、更具反應式的方式來管理應用程式中的狀態。
+
+
+=== 為什麼需要Signal
+Angular的變更偵測: Angular 在偵測是否有變更的時候會使用 ngZone 來進行偵測， ngZone 會去偵測 `可能會需要變更偵測的行為` 
+，例如DOM事件、HTTP 請求、 `setTimeout()` 等，一旦偵測到變更，就會觸發變更偵測機制，重新渲染 UI。
+
+ngZone運作過程: 
+
+. 初始渲染: 當 Angular 應用啟動時，會進行一次全局變更偵測，檢查每個 Component 並初始化它們的資料綁定，以便初始渲染。
+
+. 監控可能會需要變更偵測的行為
+
+. 觸發變更偵測
+當 ngZone 偵測到上述所說到的行為時，會執行以下步驟: 
+
+	.. 標記變更: 將應用標記為「需要變更偵測」，準備執行檢查流程。
+
+	.. 執行變更偵測: Angular 的變更偵測系統會逐層遍歷 Component 階層，檢查每個 Component 的資料綁定是否發生變化。
+
+	.. 更新 UI: 當資料改變時，Angular 會重新渲染受影響的部分 UI，讓視圖與資料保持同步。
+
+. 標記變更結束
+變更偵測完成後，Angular 會標記應用為「變更穩定狀態」，此時不會再執行變更偵測，直到下一個行為被 ngZone 攔截。
+
+ngZone提供了一個統一的變更偵測機制來管理應用程式的變更，並且變更是會自動觸發的，不需要開發者自行手動處理。
+
+ngZone的缺點: 攔截範圍過大，由於 NgZone 只是攔截了「可能會需要變更偵測的行為」，並且逐層遍歷 Component 查看每個資料綁定，但如果當下這個行為沒有需要重新渲染的變更，就額外浪費了一次檢查。
+
+那有沒有一種方式就是「當我們真的有改變需要渲染的資料時，才進行渲染」?那就是signal
+
+
+=== 建立一個signal
+
+建立一個 signal 只要呼叫他的 `signal()` 方法即可，方法內可帶入預設值
+
+[source, typescript]
+----
+import { Component } from '@angular/core';
+import {signal} from '@angular/core';
+import {count} from 'rxjs';
+
+@Component({
+  selector: 'app-test1',
+  standalone: true,
+  // 直接將count當作方法呼叫即可取值
+  template: `
+    <div>{{ count() }}</div> 
+  `,
+})
+export class Test1Component {
+  count: WritableSignal<number> = signal(0); // 直接呼叫signal並設定預設值為O
+}
+
+----
+
+由於 count 是一個物件，我們無法直接改變它，我們需要count自帶的方法才可變更值。
+
+==== set
+
+直接將要改變的值傳送進去
+
+[source, typescript]
+----
+count.set(100);
+----
+
+==== update
+
+如果要先拿到過去的資料來進行加減異動並更新的話有以下兩種方式
+
+.set
+[source, typescript]
+----
+count.set(count() + 100);
+----
+
+另一項更簡單的方法是使用本身所提供的update方法來做操作
+.set
+[source, typescript]
+----
+count.update(current => current + 100);
+----
+
+==== 計算數據(使用computed())
+
+若有多個 signal 要一起計算的話可以使用 `computed()` 方法進行。
+
+NOTE: **computed()** 會回傳一個 readonly signal 
+
+[source, typescript]
+----
+import { signal, computed } from '@angular/core';// 需要import computed
+
+price: WritableSignal<number> = signal(100);
+quantity: WritableSignal<number> = signal(2);
+
+// 創建計算值
+total: Signal<number> = computed(() => this.price() * this.quantity());
+
+console.log(total()); // 輸出: 200
+----
+
+`computed()` 在呼叫時需要傳入一個 callback function，在此 function 內的 signal 發生變化時，這個 callback function 就會自動被呼叫，因此我們可以在 signal 有變化時，才去根據來源 signal 產生新結果
+
+link:Tools.html[回上一頁]

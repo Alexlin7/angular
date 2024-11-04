@@ -1,0 +1,162 @@
+== 常用指令
+安裝完成後，可以使用 `ng` 命令來建立、建置、測試和啟動 Angular 應用程式。
+
+[cols="1,3", options="header"]
+|===
+| 命令 | 描述
+
+| https://angular.dev/cli/build[`ng build`^]
+| **編譯 Angular 專案為生產環境版本**
+
+| https://angular.dev/cli/serve[`ng serve`^]
+| **建構應用程式並啟動開發伺服器**
+
+| https://angular.dev/cli/generate#component-command[`ng generate`^]
+| **基於後置的sub-command生成相對應的檔案**
+
+| https://angular.dev/cli/test[`ng test`^]
+| **執行單元測試**
+
+| https://angular.dev/cli/e2e[`ng e2e`^]
+| **執行端到端測試**
+|===
+
+== 補充: generate 指令
+`ng generate` 指令可以用來生成 Angular 應用程式中的各種檔案，例如元件、服務、模組等。以下是一些常用的子指令：
+
+[cols="1,3", options="header"]
+|===
+| 子指令 | 描述
+
+| https://angular.dev/cli/generate/app-shell[`app-shell`^]
+| **生成應用程式的App Shell**
+
+| https://angular.dev/cli/generate/application[`application`^]
+| **生成應用程式**
+
+| https://angular.dev/cli/generate/class[`class`^]
+| **生成類別**
+
+| https://angular.dev/cli/generate#service-command[`component`^]
+| **生成元件**
+
+| https://angular.dev/cli/generate/config[`config`^]
+| **生成Config檔**
+
+| https://angular.dev/cli/generate/directive[`directive`^]
+| **生成指令**
+
+| https://angular.dev/cli/generate/enum[`enum`^]
+| **生成列舉**
+
+| https://angular.dev/cli/generate/environments[`environments`^]
+| **生成環境檔案**
+
+| https://angular.dev/cli/generate/guard[`guard`^]
+| **生成一個路由守衛**
+
+| https://angular.dev/cli/generate/interceptor[`interceptor`^]
+| **生成攔截器**
+
+| https://angular.dev/cli/generate/interface[`interface`^]
+| **生成介面**
+
+| https://angular.dev/cli/generate/library[`library`^]
+| **生成函式庫**
+
+| https://angular.dev/cli/generate/module[`module`^]
+| **生成模組**
+
+| https://angular.dev/cli/generate/pipes[`pipe`^]
+| **生成管道**
+
+| https://angular.dev/cli/generate/resolver[`resolver`^]
+| **生成路由解析器**
+
+| https://angular.dev/cli/generate/service[`service`^]
+| **生成服務**
+
+| https://angular.dev/cli/generate/service-worker[`service-worker`^]
+| **生成Service Worker**
+
+| https://angular.dev/cli/generate/web-worker[`web-worker`^]
+| **生成Web Worker**
+
+|===
+
+=== app-shell
+
+會用來產生app shell元件，此元件主要用來在應用程式初始載入時快速啟動靜態渲染頁面，實現出在實際內容載入前先顯示出應用程式基本骨架給使用者看
+
+- 生成檔案結構
+----
+src
+├── app
+│   ├── app.config.server.ts
+│   └── app-shell
+│       ├── app-shell.component.html
+│       ├── app-shell.component.css
+│       ├── app-shell.component.spec.ts
+│       └── app-shell.component.ts
+└── main.server.ts
+----
+
+[cols="1,3", options="header"]
+|===
+| 檔案 | 描述
+
+| app.config.server.ts
+| **應用程式中的伺服器端配置檔案，主要用於設定 Server-Side Rendering 相關的配置**
+
+| app-shell.component.html
+| **app-shell要渲染的內容**
+
+| app-shell.component.css
+| **app-shell渲染內容的樣式**
+
+| app-shell.component.spec
+| **app-shell的單元測試**
+
+| app-shell.component.ts
+| **App Shell 功能的核心元件**
+
+| main.server.ts
+| **應用程式伺服器端的進入點**
+
+|===
+
+=== application
+會在專案的projects資料夾下產生新的應用程式，當專案需要多應用程式時才會使用到，例如店商網站會有不同品牌的商品，但都使用相同的應用程式邏輯
+
+- 生成檔案
+----
+projects/
+└── application/
+    ├── public/
+    ├── src/
+    |   └── ...
+    ├── tsconfig.app.json
+    └── tsconfig.spec.json
+----
+除了一些共用的依賴與angular配置以外基本上檔案都跟初始應用程式是一樣的
+
+=== class
+分別產生class檔案與class的單元測試檔案
+
+- 生成檔案
+----
+app/
+├── ...
+├── class.ts
+└── class.spec.ts
+----
+
+=== component
+
+產生一般的Angular元件
+
+=== config
+
+
+
+link:index.html[回首頁]

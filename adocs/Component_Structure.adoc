@@ -1,0 +1,118 @@
+== Angular 元件結構
+
+在Angular當中，每個元件包含了:  **HTML 模板**、**CSS 樣式**和帶有 `@Component()` 裝飾器的 **TypeScript 類別**。
+
+=== 使用Anguler CLI建立一個新的元件
+
+當使用者在 Command Line 中下達 `ng generate component item` 時 +
+該指令會建立以下內容: 
+
+. 用於 HTML 的 item.component.html +
+link:./HTMLTemplate.html[HTML 模板]
+
+. 用於邏輯的 item.component.ts +
+link:./Class.html[Class 類別]
+
+. 用於樣式的 item.component.css +
+link:./CSSStyle.html[CSS 樣式]
+
+. 測試檔案 item.component.spec.ts
+
+NOTE: 一個元件最基本的組成要有一個**TypeScript檔**，其他三項皆為選擇性，使用者可以下達指令時在後面宣告參數來決定是否要生成其他三項，或是修改 angular.json 檔來改變。 + 
+參考: link:./ng_generate只生成ts檔.html[ng generate只生成ts檔]
+
+==== 手動建立元件
+
+建立一個新檔案 <component-name>.component.ts。
+新增元件所需的 import 和 @Component 裝飾器。
+
+[source, typescript]
+----
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'app-component-overview',
+    templateUrl: './component-overview.component.html',
+    styleUrls: ['./component-overview.component.css']
+})
+export class ComponentOverviewComponent {
+    // 程式碼寫在這裡
+}
+----
+
+==== 指定元件的 CSS 選擇器
+
+每個元件都需要一個 CSS 選擇器，用來指示 Angular 如何去使用這項元件。
+
+[source, typescript]
+----
+@Component({
+    selector: 'app-component-overview',
+})
+----
+
+==== 定義一個元件的樣板
+
+樣板是用來渲染元件的 HTML，可以透過 templateUrl 引用外部檔案，或直接使用 template 在元件中定義。
+
+[source, typescript]
+----
+@Component({
+    selector: 'app-component-overview',
+    template: '<h1>Hello World!</h1>',
+})
+----
+
+如果樣板跨多行，可以使用反引號(``)包起來: 
+
+[source, typescript]
+----
+@Component({
+    selector: 'app-component-overview',
+    template: `
+        <h1>Hello World!</h1>
+        <p>This template definition spans multiple lines...</p>
+    `
+})
+----
+
+要把樣板定義為外部檔案，就要把 `templateUrl` 新增到 `@Component` 裝飾器中。
+
+[source,typescript]
+----
+@Component({
+    selector: 'app-component-overview',
+    templateUrl: './component-overview.component.html',
+})
+----
+
+Angular 元件需要一個用 `template` 或 `templateUrl` 定義的樣板。但你只能二擇一，不能同時做使用。
+
+簡單來說: 每個元件都要設定一個 `template`，但有兩種方式: 
+
+. `template` 是一個直接寫在元件內的 HTML。
+. `templateUrl` 是一個外部檔案的位址。
+
+==== 宣告元件的樣式
+
+如同上方設定樣板，你可以透過以下方式宣告樣式: 
+
+[source,typescript]
+----
+@Component({
+    selector: 'app-component-overview',
+    styleUrls: ['./component-overview.component.css']
+})
+----
+
+若要設定多個樣式檔案，可以用陣列: 
+
+[source,typescript]
+----
+@Component({
+    selector: 'app-component-overview',
+    styleUrls: ['./styles1.css', './styles2.css']
+})
+----
+
+link:index.html[回首頁]
