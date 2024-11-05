@@ -205,7 +205,7 @@ image::../image/execution_order.png[Angular 初始化元件的執行順序]
 
 在初始化結束後，元件的生命週期就會變成如下圖:
 
-image::../image/Duringinitialization.jps[Angular 元件初始化的生命週期流程]
+image::../image/Duringinitialization.jpg[Angular 元件初始化的生命週期流程]
 
 [NOTE]
 來源: https://angular.dev/guide/components/lifecycle#execution-order[Angular 官方文件^]
