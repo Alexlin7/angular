@@ -16,9 +16,11 @@ Angular、Angular CLI 和應用程式依賴 **npm** 套件管理器進行管理�
 * **安裝Angular**
 +
 ----
-npm install -g @angular/cli@version
+npm install @angular/cli@version
 ----
 +
-`-g` 參數會將Angular CLI安裝在全域環境，若不想用此參數安裝在全域環境需要自行在指定資料夾下安裝
+此時會安裝在當前的目錄下
++
+若使用參數 `-g` 會將Angular CLI安裝在全域環境
 
 link:index.html[回首頁]

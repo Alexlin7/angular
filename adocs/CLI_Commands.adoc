@@ -109,7 +109,7 @@ src
 | **應用程式中的伺服器端配置檔案，主要用於設定 Server-Side Rendering 相關的配置**
 
 | app-shell.component.html
-| **app-shell要渲染的內容**
+| **app-shell要渲染的樣板內容**
 
 | app-shell.component.css
 | **app-shell渲染內容的樣式**
@@ -170,8 +170,8 @@ app/
 ----
 app/
 ├── ...
-├── testDir.directive.ts
-└── testDir.directive.spec.ts  // 單元測試用
+├── test.directive.ts
+└── test.directive.spec.ts  // 單元測試用
 ----
 
 `testDir.directive.ts`
@@ -453,7 +453,7 @@ your-workspace/
 === `ng generate module [name]`
 產生 Angular 的模組，模組是用來封裝各種元件、服務、管道等多功能集合。
 
-==== 生成檔案
+==== 生產檔案
 
 ----
 app/
@@ -463,5 +463,54 @@ app/
 ----
 
 === `ng generate pipe [name]`
+
+會產生 Angular 的管道(Pipe)，管道通常用於轉換顯示的資料格式
+
+==== 生產檔案
+
+----
+app/
+├── ...
+├── test.pipe.ts
+└── test.pipe.spec.ts
+----
+
+=== `ng generate resolver [name]`
+
+產生路由解析器，主要功能是在進入路由前先取得資料，確保元件在顯示時已經有需要的資料
+
+==== 生成檔案
+
+----
+app/
+├── ...
+├── test.resolver.ts
+└── test.resolver.spec.ts
+----
+
+=== `ng generate service`
+會產生 Angular 的服務，通常會用來實作一些商業邏輯、數據處理、HTTP請求等功能
+
+==== 生成檔案
+
+----
+app/
+├── ...
+├── test.service.ts
+└── test.service.spec.ts
+----
+
+=== `ng generate service-worker`
+
+用來為 Angular 添加 Service Worker 支援的指令，可以讓應用程式具有離線運行能力、快取資源、接收推送通知等 PWA (Progressive Web App) 功能。
+
+==== 產生檔案
+----
+your-workspace/
+├── ...
+└── ngsw-config.json
+----
+
+會生成Service Worker的配置文件
 
 link:index.html[回首頁]
