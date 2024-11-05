@@ -22,7 +22,7 @@ Angular 中的 `ViewEncapsulation` 主要有以下幾種模式:
 
 使用 `ViewEncapsulation.Emulated` 時，Angular會預先處理所有元件的 CSS ，以便它們僅應用於元件的View。
 
-在正在執行的Angular應用程式中的DOM中，使用Emulated模式的元件的樣板看起來像這樣:
+在正在執行的 Angular 應用程式中的DOM中，使用 Emulated 模式的元件的樣板看起來像這樣:
 
 [source,html]
 ----
@@ -38,8 +38,8 @@ Angular 中的 `ViewEncapsulation` 主要有以下幾種模式:
 
 |===
 | 屬性 | 說明
-| **_nghost** | 被新增到包裹元件View的元素，這就是原生 Shadow DOM 封裝中的 Shadow Root 。元件的宿主元素通常就是這種情況。
-| **_ngcontent** | 被新增到元件View中的子元素上，這些屬性用於將元素與其各自模擬的 ShadowRoots(具有對應 `_nghost` 屬性的宿主元素)相對應。
+| **_nghost** | 被新增到包裹元件 View 的元素，這就是原生 Shadow DOM 封裝中的 Shadow Root 。元件的宿主元素通常就是這種情況。
+| **_ngcontent** | 被新增到元件 View 中的子元素上，這些屬性用於將元素與其各自模擬的 ShadowRoots(具有對應 `_nghost` 屬性的宿主元素)相對應。
 |===
 
 [NOTE]
@@ -151,12 +151,14 @@ image:../image/shadow-dom-encapsulation.png[ViewEncapsulation.ShadowDom]
 .CSS被覆蓋
 image::../image/樣式覆蓋.png[ CSS 覆蓋]
 
-`ShadowDomEncapsulationComponent` 本身的 CSS 在該元件的 Shadow ROOT 中都可使用，並且 `NoEncapsulationComponent` 和 `EmulatedEncapsulationComponent` 也會將自己的CSS給新增一份到Shadow ROOT中。
-+ 
+`ShadowDomEncapsulationComponent` 本身的 CSS 在該元件的 Shadow ROOT 中都可使用，並且 `NoEncapsulationComponent` 和 `EmulatedEncapsulationComponent` 也會將自己的 CSS 給新增一份到 Shadow ROOT 中。
+
 `EmulatedEncapsulationComponent` 的 CSS 因為使用屬性值區別的關係，因此該 CSS 不受影響。
-+
-但因為Shadow DOM只是單純在Shadow Root去隔離 CSS ，在 `<style>` 標籤內並沒有去做相關的隔離措施，並且如同前面的警告內容所說: 被設定成 `ViewEncapsulation.None` 元件的 CSS 會新增到每個 `ViewEncapsulation.ShadowDom` 元件的 Shadow DOM 宿主中。
-+
+
+
+但因為 Shadow DOM 只是單純將 CSS 寫在Shadow Root 內來去做隔離  ，在 `<style>` 標籤內並沒有去做相關的隔離措施，並且如同前面的警告內容所說: 被設定成 `ViewEncapsulation.None` 元件的 CSS 會新增到每個 `ViewEncapsulation.ShadowDom` 元件的 Shadow DOM 宿主中。
+
+
 因此會導致 CSS 被覆蓋的情況發生。
 
 [NOTE]
