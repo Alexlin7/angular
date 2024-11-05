@@ -84,9 +84,9 @@
 
 |===
 
-=== app-shell
+=== `ng generate app-shell`
 
-會用來產生app shell元件，此元件主要用來在應用程式初始載入時快速啟動靜態渲染頁面，實現出在實際內容載入前先顯示出應用程式基本骨架給使用者看
+會用來產生 app shell 元件，此元件主要用來在應用程式初始載入時快速啟動靜態渲染頁面，實現出在實際內容載入前先顯示出應用程式基本骨架給使用者看
 
 - 生成檔案結構
 ----
@@ -125,7 +125,7 @@ src
 
 |===
 
-=== application
+=== `ng generate application [name]`
 會在專案的projects資料夾下產生新的應用程式，當專案需要多應用程式時才會使用到，例如店商網站會有不同品牌的商品，但都使用相同的應用程式邏輯
 
 - 生成檔案
@@ -140,7 +140,7 @@ projects/
 ----
 除了一些共用的依賴與angular配置以外基本上檔案都跟初始應用程式是一樣的
 
-=== class
+=== `ng generate class [name]`
 分別產生class檔案與class的單元測試檔案
 
 - 生成檔案
@@ -151,11 +151,11 @@ app/
 └── class.spec.ts
 ----
 
-=== component
+=== `ng generate component [name]`
 
 產生一般的Angular元件
 
-=== config
+=== `ng generate config`
 
 產生一些配置檔案
 
@@ -319,7 +319,7 @@ export const environment = {
 . 使用自訂的環境配置啟動伺服器
 +
 ----
-ng serve --congiguration=testenv
+ng serve --configuration=testenv
 ----
 +
 此時 `<h1>` 標籤的內容就會變成 testenv
