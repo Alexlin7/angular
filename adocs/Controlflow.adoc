@@ -108,6 +108,8 @@
 }
 ----
 
+NOTE: @switch 沒有fallthrough，因此不需要break 或return 語句。 link:https://angular.dev/api/core/@switch#:~:text=nothing%20is%20shown.-,%40switch,statement.,-Jump%20to%20details[官方文件]
+
 ==== @defer 延遲加載
 
 1.基本概念: 
