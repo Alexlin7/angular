@@ -206,6 +206,7 @@ image::../image/execution_order.png[Angular 初始化元件的執行順序]
 image::../image/Duringinitialization.jpg[Angular 元件初始化的生命週期流程]
 
 . 實作範例
+這個例子是在appcomponet底下加入一個子元件test的簡單範例，並且兩個元件都有實作所有生命週期的方法，藉此來觀察執行狀況
 
 image::../image/initExe.jpg[初始化實作]
 
