@@ -180,13 +180,13 @@ app/
 ----
 import {Directive, ElementRef} from '@angular/core';
 @Directive({
-  standalone: true,
-  selector: '[appHighlight]',
+    standalone: true,
+    selector: '[appHighlight]',
 })
 export class HighlightDirective {
-  constructor(private el: ElementRef) {
-    this.el.nativeElement.style.backgroundColor = 'yellow';
-  }
+    constructor(private el: ElementRef) {
+        this.el.nativeElement.style.backgroundColor = 'yellow';
+    }
 }
 ----
 
@@ -255,15 +255,15 @@ import { RouterOutlet } from '@angular/router';
 import { environment } from '../environments/environment'; // 匯入環境變數配置
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    standalone: true,
+    imports: [RouterOutlet],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'appcli';
-  env = environment.env; // 取得當前的環境內容
+    title = 'appcli';
+    env = environment.env; // 取得當前的環境內容
 }
 ----
 
@@ -323,5 +323,145 @@ ng serve --configuration=testenv
 ----
 +
 此時 `<h1>` 標籤的內容就會變成 testenv
+
+=== `ng generate guard [name]`
+
+會產生 Angular 的路由防衛，用來保護路由，控制使用者是否可以訪問特定頁面
+
+輸入指令時預設會有四個 Route Guard 選項:
+
+- CanActivate: 控制是否可以訪問該路由
+- CanActivateChild: 控制是否可以訪問子路由
+- CanDeactivate: 控制是否可以離開路由
+- CanMatch: 控制是否可以匹配該路由
+
+`生成檔案`
+----
+app/
+├── ...
+├── test.guard.ts
+└── test.guard.spec.ts // 單元測試用
+----
+
+=== `ng generate interceptor`
+
+會產生出 Angular 的請求攔截器，當應用程式發出request請求時都會先經過攔截器的處理
+
+`生成檔案`
+----
+app/
+├── ...
+├── test.interceptor.ts
+└── test.interceptor.spec.ts // 單元測試用
+----
+
+使用前需要先設定provider
+
+`app.config.ts`
+[source,typescript]
+----
+export const appConfig: ApplicationConfig = {
+    providers: [
+        provideHttpClient(
+            withInterceptors([testInterceptor])
+        )
+    ]
+};
+----
+
+==== 簡單範例
+
+在攔截器裡新增標頭內容
+
+`test.interceptor.ts`
+[source,typescript]
+----
+import { HttpInterceptorFn } from '@angular/common/http';
+
+export const testInterceptor: HttpInterceptorFn = (req, next) => {
+    console.log(req);
+    console.log("Interceptor is running");
+    const newReq = req.clone({
+        headers: req.headers.set('X-New-Header', 'new header value')
+    });
+    console.log(newReq);
+    return next(newReq);
+};
+----
+image:../image/interceptor_test.png[interceptor_test]
+
+當應用程式發出 request 時毀被攔截器先攔截下來， 上述範例將發出去的 request 在攔截器當中新增 header 的內容，最後再把新的 request 給繼續發出去
+
+==== 設定多個攔截器
+
+`app.config.ts`
+[source,typescript]
+----
+export const appConfig: ApplicationConfig = {
+    providers: [
+        provideHttpClient(
+            withInterceptors([
+                testInterceptor1,
+                testInterceptor2,
+                testInterceptor3,
+                testInterceptor4
+            ])
+        )
+    ]
+};
+----
+
+若設定多個攔截器則會按照陣列順序依序攔截request +
+testInterceptor1 -> testInterceptor2 -> testInterceptor3 -> testInterceptor4
+
+=== `ng generate library [name]`
+會創建 Angular 函式庫，建立可重複使用的元件、服務或其他功能，並且可發布到 npm 提供其他專案使用
+
+==== 生產檔案
+----
+your-workspace/
+├── projects/
+│   ├── my-lib/
+│   │   ├── src/
+│   │   │   ├── lib/
+│   │   │   │   ├── my-lib.component.ts
+│   │   │   │   ├── my-lib.component.spec.ts
+│   │   │   │   ├── my-lib.service.ts
+│   │   │   │   └── my-lib.service.spec.ts
+│   │   │   └── public-api.ts
+│   │   ├── ng-package.json
+│   │   ├── package.json
+│   │   ├── tsconfig.lib.json
+│   │   ├── tsconfig.lib.prod.json
+│   │   └── tsconfig.spec.json
+└── package.json
+----
+
+==== 檔案說明
+[cols="1,3", options="header"]
+|===
+| 檔案 | 描述
+
+| public-api.ts
+| **函式庫的公開 API 入口點，用來決定哪些內容要對外公開讓使用者使用**
+
+| ng-package.json
+| **用來配置如何打包 Angular 函式庫的配置檔，使用 ng-packagr 工具將函式庫編譯打包成符合 Angular Package Format (APF) 的格式**
+
+|===
+
+=== `ng generate module [name]`
+產生 Angular 的模組，模組是用來封裝各種元件、服務、管道等多功能集合。
+
+==== 生成檔案
+
+----
+app/
+├── ...
+└── test-module/
+    └── test-module.module
+----
+
+
 
 link:index.html[回首頁]
