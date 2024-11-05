@@ -157,6 +157,171 @@ app/
 
 === config
 
+產生一些配置檔案
 
+. karma.config.js: 用來設定單元測試環境
+. .browserslistrc: 與瀏覽器相關的相容性配置
+
+=== `ng generate directive [name]` 
+
+用來生成自訂的屬性指令，此指令是用來改變DOM元素行為或是外觀
+
+`生成檔案`
+----
+app/
+├── ...
+├── testDir.directive.ts
+└── testDir.directive.spec.ts  // 單元測試用
+----
+
+`testDir.directive.ts`
+
+[source,typescript]
+----
+import {Directive, ElementRef} from '@angular/core';
+@Directive({
+  standalone: true,
+  selector: '[appHighlight]',
+})
+export class HighlightDirective {
+  constructor(private el: ElementRef) {
+    this.el.nativeElement.style.backgroundColor = 'yellow';
+  }
+}
+----
+
+- 透過@Directive裝飾器將此元件變為屬性指令
+- 設定selector屬性作為屬性名稱
+
+
+
+`app.component.html`
+
+[source,html]
+----
+<p appHighlight>Highlight me!</p>
+----
+
+- 當html使用了屬性指令，便會執行元件的constructor，上述文字會變換成黃色
+
+=== `ng generate enum [name]`
+會產生通用的列舉
+
+`生成檔案`
+----
+app/
+├── ...
+└── testEnum.ts
+----
+
+=== `ng generate environments`
+
+會產生 Angular 環境的配置文件，用來管理不同環境下的環境變數
+
+`生成檔案`
+----
+src/
+├── ...
+└── environments/
+    ├── environment.development.ts
+    └── environment.ts // 默認環境，通常為production
+----
+
+==== 簡單範例
+
+`environment.ts`
+[source,typescript]
+----
+export const environment = {
+    env: "pro"
+};
+----
+
+`environment.development.ts`
+[source,typescript]
+----
+export const environment = {
+    env: "dev"
+};
+----
+
+分別在不同環境下設定相同的環境變數名，變數值表示當前的環境
+
+`app.component.ts`
+[source,typescript]
+----
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { environment } from '../environments/environment'; // 匯入環境變數配置
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  title = 'appcli';
+  env = environment.env; // 取得當前的環境內容
+}
+----
+
+`app.component.html`
+[source,html]
+----
+<h1>{{ env }}</h1>
+----
+
+當伺服器使用 production 配置啟動，標題會顯示pro，若使用 development 配置啟動，標題則會是dev
+
+==== 自訂環境
+
+也可以自訂 Angular 的執行環境
+
+. 新增自訂環境配置:
++ 
+在 `angular.json` 下的 `/architect/build/configurations` 新增 `testenv`
++
+[source,json]
+----
+"testenv": {}
+----
+
+. 在 `environments/` 下新增自訂環境配置檔 `environment.testenv.ts`
++
+`environment.testenv.ts`
++
+[source,typescript]
+----
+export const environment = {
+    env: "testenv"
+}
+----
+
+. 在 `angular.json` 的 `testenv` 配置下新增 fileReplacements，用來替換 environment 檔案
++
+[source,json]
+----
+"testenv":{
+    "fileReplacements": [
+        {
+            "replace": "src/environments/environment.ts",
+            "with": "src/environments/environment.testenv.ts"
+        }
+    ]
+}
+----
+
+- replace: 設定要替換的environment，通常預設為environment.ts，所以都會是替換此檔案
+- with: 設定要替換成哪個environment，換成剛新增的 `environment.testenv.ts` 即可
+
+. 使用自訂的環境配置啟動伺服器
++
+----
+ng serve --congiguration=testenv
+----
++
+此時 `<h1>` 標籤的內容就會變成 testenv
 
 link:index.html[回首頁]
