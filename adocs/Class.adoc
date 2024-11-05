@@ -203,9 +203,19 @@ image::../image/execution_order.png[Angular 初始化元件的執行順序]
 [NOTE]
 此情況只討論一個元件只包含一個元件，若包含多個元件可能還會受到其他因素影響，例如:load配置以及@defer
 
+image::../image/Duringinitialization.jpg[Angular 元件初始化的生命週期流程]
+
+. 實作範例
+
+image::../image/initExe.jpg[初始化實作]
+
 在初始化結束後，元件的生命週期就會變成如下圖:
 
-image::../image/Duringinitialization.jpg[Angular 元件初始化的生命週期流程]
+image::../image/updated.jpg[Angular 初始化之後的更新]
+
+. 實作範例
+
+image::../image/updateExe.jpg[初始化之後的更新的實作]
 
 [NOTE]
 來源: https://angular.dev/guide/components/lifecycle#execution-order[Angular 官方文件^]
