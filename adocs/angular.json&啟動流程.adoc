@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == angular.json & 啟動流程
 
 === project配置

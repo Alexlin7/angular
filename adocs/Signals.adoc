@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == signals 簡介
 
 === 什麼是signals

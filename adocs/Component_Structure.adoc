@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == Angular 元件結構
 
 在Angular當中，每個元件包含了:  **HTML 模板**、**CSS 樣式**和帶有 `@Component()` 裝飾器的 **TypeScript 類別**。

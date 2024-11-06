@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == Angular 專案目錄結構
 
 [source,shell]

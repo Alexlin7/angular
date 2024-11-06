@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == Routing
 
 === 1. 建立路由配置檔案

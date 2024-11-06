@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == Shadow DOM
 
 簡單來說，**Shadow DOM** 是一種技術，它可以將 HTML 元素進行封裝和隔離，讓開發者能以自訂標籤的方式使用元件。

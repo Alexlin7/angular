@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == Forms
 你可以使用 `ReactiveFormsModule` 或 `FormsModule` 來處理表單的資料繫結和驗證。
 

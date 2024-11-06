@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == 安裝前置作業
 
 在本地端開發 Angular 應用程式前，您需要安裝: 

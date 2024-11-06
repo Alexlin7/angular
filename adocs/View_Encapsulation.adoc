@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == Angular ViewEncapsulation
 
 在 Angular 中，元件的 CSS 可以封裝在各自元件的宿主元素中，來讓整體應用程式，不會被部分元件的 CSS 設定所影響。

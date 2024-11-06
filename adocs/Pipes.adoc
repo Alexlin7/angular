@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == Pipes
 
 Pipes 是一個純函式，作用於 template (`{{}}`) 中，不會產生副作用。Angular 也提供一些內建的 pipe，下面是使用 Angular 提供的 pipe 和自定義 pipe 的範例。

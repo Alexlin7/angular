@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 = Angular 學習指南
 
 == 目錄

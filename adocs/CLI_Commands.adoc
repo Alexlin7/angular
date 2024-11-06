@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == 常用指令
 安裝完成後，可以使用 `ng` 命令來建立、建置、測試和啟動 Angular 應用程式。
 

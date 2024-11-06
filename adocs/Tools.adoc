@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == 工具介紹
 
 . link:Forms.html[Forms ( 表單)]

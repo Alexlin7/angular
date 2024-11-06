@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == CSS樣式 (Style)
 在Angular中的樣式是用來為特定的元件設計樣式
 

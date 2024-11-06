@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 = ng generate components 僅生成.ts檔案
 
 == 事情原由

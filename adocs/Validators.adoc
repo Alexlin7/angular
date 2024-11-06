@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == Validators
 
 . 在 component 中匯入 Validators:

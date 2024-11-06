@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 = Form與event設定的踩雷部分
 
 == 事情原由

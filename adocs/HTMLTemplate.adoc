@@ -1,4 +1,4 @@
-
+:favicon: ../image/favicon.ico
 == HTML模板 (Template)
 Template 負責定義元件的 View ，也就是**畫面**的呈現方式。 +
 開發者能透過 Angular 的模板語法來實現資料的顯示、條件渲染、事件處理等功能，並**動態**的更新畫面。

@@ -1,3 +1,4 @@
+:favicon: ../image/favicon.ico
 == Dependency Injection
 
 Angular 可以在執行期間注入你要的 service 或 resource。
