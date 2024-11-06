@@ -155,6 +155,16 @@ app/
 
 產生一般的Angular元件
 
+==== 產生檔案
+----
+app/
+├── ...
+├── app.component.ts
+├── app.component.html
+├── app.component.css
+└── app.component.spec.ts
+----
+
 === `ng generate config`
 
 產生一些配置檔案
@@ -511,7 +521,7 @@ your-workspace/
 └── ngsw-config.json
 ----
 
-會生成Service Worker的配置文件
+- `ngsw-config.json`: Service Worker的配置文件
 
 === `ng generate web-worker [name]`
 
@@ -526,5 +536,18 @@ your-workspace/
 |       └── test.worker.ts
 └── tsconfig.worker.json
 ----
+
+==== 檔案說明
+[cols="1,3", options="header"]
+|===
+| 檔案 | 描述
+
+| test.worker.ts
+| **Web Worker 的主要程式檔案，運行在獨立的執行續，不會引響到主要的執行續**
+
+| tsconfig.worker.json
+| **Web Worker 專用的 TypeScript 編譯配置檔**
+
+|===
 
 link:index.html[回首頁]
