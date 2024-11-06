@@ -513,4 +513,18 @@ your-workspace/
 
 會生成Service Worker的配置文件
 
+=== `ng generate web-worker [name]`
+
+會產生Web Worker檔案，Web Worker 允許在背景執行 JavaScript 程式，不會阻塞主執行緒。
+
+==== 產生檔案
+----
+your-workspace/
+├── ...
+├── src/
+|   └── app/
+|       └── test.worker.ts
+└── tsconfig.worker.json
+----
+
 link:index.html[回首頁]
