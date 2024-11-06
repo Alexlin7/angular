@@ -239,7 +239,7 @@ image::../image/output.png["圖片"]
 
 image::../image/twowayBind_sugar.jpg["圖片"]
 
-1. 自定義
+1.自定義
 
 ===== 使用@Output與@Input建立雙向綁定
 
@@ -321,7 +321,7 @@ export class ChildComponent {
 .使用@Output與@Input綁定
 image::../image/two-way-bind-with-input-and-output.gif[使用@Output與@Input綁定後]
  
-2. ngModel
+2.ngModel
 .app.component.ts
 [source,javascript]
 ----
