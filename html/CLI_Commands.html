@@ -689,6 +689,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>產生一般的Angular元件</p>
 </div>
+<div class="sect3">
+<h4 id="_產生檔案">產生檔案</h4>
+<div class="listingblock">
+<div class="content">
+<pre>app/
+├── ...
+├── app.component.ts
+├── app.component.html
+├── app.component.css
+└── app.component.spec.ts</pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_ng_generate_config"><code>ng generate config</code></h3>
@@ -1182,7 +1195,7 @@ testInterceptor1 &#8594; testInterceptor2 &#8594; testInterceptor3 &#8594; testI
 <p>用來為 Angular 添加 Service Worker 支援的指令，可以讓應用程式具有離線運行能力、快取資源、接收推送通知等 PWA (Progressive Web App) 功能。</p>
 </div>
 <div class="sect3">
-<h4 id="_產生檔案">產生檔案</h4>
+<h4 id="_產生檔案_2">產生檔案</h4>
 <div class="listingblock">
 <div class="content">
 <pre>your-workspace/
@@ -1190,9 +1203,57 @@ testInterceptor1 &#8594; testInterceptor2 &#8594; testInterceptor3 &#8594; testI
 └── ngsw-config.json</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>會生成Service Worker的配置文件</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ngsw-config.json</code>: Service Worker的配置文件</p>
+</li>
+</ul>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_web_worker_name"><code>ng generate web-worker [name]</code></h3>
+<div class="paragraph">
+<p>會產生Web Worker檔案，Web Worker 允許在背景執行 JavaScript 程式，不會阻塞主執行緒。</p>
+</div>
+<div class="sect3">
+<h4 id="_產生檔案_3">產生檔案</h4>
+<div class="listingblock">
+<div class="content">
+<pre>your-workspace/
+├── ...
+├── src/
+|   └── app/
+|       └── test.worker.ts
+└── tsconfig.worker.json</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_檔案說明_2">檔案說明</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">檔案</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">test.worker.ts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Web Worker 的主要程式檔案，運行在獨立的執行續，不會引響到主要的執行續</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tsconfig.worker.json</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Web Worker 專用的 TypeScript 編譯配置檔</strong></p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
 <p><a href="index.html">回首頁</a></p>
 </div>
@@ -1203,7 +1264,7 @@ testInterceptor1 &#8594; testInterceptor2 &#8594; testInterceptor3 &#8594; testI
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-06 09:04:21 +0800
+Last updated 2024-11-06 10:48:09 +0800
 </div>
 </div>
 </body>

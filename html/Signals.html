@@ -541,10 +541,36 @@ export class Test1Component {
 <p>如果要先拿到過去的資料來進行加減異動並更新的話有以下兩種方式</p>
 </div>
 <div class="listingblock">
-<div class="title">set</div>
+<div class="title">test1.component.ts</div>
 <div class="content">
-<pre class="highlight"><code class="language-typescript" data-lang="typescript">count.set(count() + 100);</code></pre>
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">@Component({
+  selector: 'app-test1',
+  standalone: true,
+  imports: [],
+  templateUrl: './test1.component.html',
+  styleUrl: './test1.component.css'
+})
+export class Test1Component {
+  count: WritableSignal&lt;number&gt; = signal(0); // 設定為O
+
+  onClick() {
+    this.count.set(this.count() + 1);
+  }
+}</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="title">test1.component.html</div>
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;div&gt;{{ count() }}&lt;/div&gt;
+&lt;button (click)="onClick()"&gt;+&lt;/button&gt;</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../image/signal範例一.gif" alt="結果展示">
+</div>
+<div class="title">Figure 1. 結果展示</div>
 </div>
 <div class="paragraph">
 <p>另一項更簡單的方法是使用本身所提供的update方法來做操作
@@ -602,7 +628,7 @@ export class Test1Component {
 <div class="content">
 <img src="../image/signal測試.gif" alt="展示畫面">
 </div>
-<div class="title">Figure 1. 展示畫面</div>
+<div class="title">Figure 2. 展示畫面</div>
 </div>
 <div class="paragraph">
 <p>參考資料:</p>
@@ -627,7 +653,7 @@ export class Test1Component {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-06 09:07:53 +0800
+Last updated 2024-11-06 10:47:52 +0800
 </div>
 </div>
 </body>
