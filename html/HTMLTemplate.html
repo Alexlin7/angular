@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.23">
+<meta name="generator" content="Asciidoctor 2.0.22">
 <title>HTML模板 (Template)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -761,13 +761,13 @@ test(){ // 此層的事件
 <p>()&#8658; 用於將模板中的事件綁定到元件中的方法上。</p>
 </li>
 <li>
-<p>[()] &#8658; 將屬性綁定和事件綁定結合起來，實現雙向綁定。</p>
+<p>[()] &#8658; 將屬性綁定和事件綁定結合起來，實現跨元件的雙向綁定。</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>實現方式:
-實際上靠@Input與@Output就可以達成雙向綁定了，但是angular提供
+實際上靠@Input與@Output就可以達成跨元件的雙向綁定了，但是angular提供
 "[()]"語法糖。</p>
 </div>
 <div class="imageblock">
@@ -775,12 +775,12 @@ test(){ // 此層的事件
 <img src="../image/twowayBind_sugar.jpg" alt="圖片">
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>自定義</p>
+<p>跨元件的雙向綁定</p>
 </li>
-</ol>
+</ul>
 </div>
 <div class="sect4">
 <h5 id="_使用output與input建立雙向綁定">使用@Output與@Input建立雙向綁定</h5>
@@ -867,13 +867,13 @@ export class ChildComponent {
 </div>
 <div class="title">Figure 2. 使用@Output與@Input綁定</div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>ngModel
+<p>元件內部的雙向綁定ngModel
 .app.component.ts</p>
 </li>
-</ol>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -910,6 +910,12 @@ export class AppComponent {
 <div class="paragraph">
 <p><span class="image"><img src="../image/html_ex4.gif" alt="html_ex4"></span></p>
 </div>
+<div class="paragraph">
+<p>ngModel 會幫你建立下圖的監聽器</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../image/ngmodel_listener.jpg" alt="ngmodel"></span></p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -939,7 +945,7 @@ ngModel 是 Angular 中最常用的雙向綁定指令，但它並不是唯一建
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-06 13:28:50 +0800
+Last updated 2024-11-06 14:36:26 +0800
 </div>
 </div>
 </body>
