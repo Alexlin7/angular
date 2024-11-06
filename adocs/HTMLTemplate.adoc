@@ -162,7 +162,7 @@ export class UserComponent {
 
 image::../image/output1.jpg["圖片"]
 
-1. 使用"@Output"客製化新事件
+1.使用"@Output"客製化新事件
 
 [source,typescript]
 ----
@@ -171,7 +171,7 @@ image::../image/output1.jpg["圖片"]
 
 ----
 
-2. 在該元件上註冊此事件的監聽
+2.在該元件上註冊此事件的監聽
 
 [source,typescript]
 ----
@@ -184,7 +184,7 @@ image::../image/eventlisten.jpg["圖片"]
 
 NOTE: 此事件只能綁定在"@Output定義的元件上"
 
-3. 執行自定義事件的發射
+3.執行自定義事件的發射
 
 藉由@Output的宣告為事件發射器，故需要透過此物件來做事件傳遞(emit)
 
