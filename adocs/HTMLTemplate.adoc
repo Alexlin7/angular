@@ -182,7 +182,7 @@ image::../image/output1.jpg["圖片"]
 
 image::../image/eventlisten.jpg["圖片"]
 
-NOTE: 此事件只能綁定在"@Output定義的元件上"
+NOTE: 此事件只能綁定在"@Output定義的元件上，如果你想要在其他元素綁定此事件監聽器無法達到預想的效果"
 
 3.執行自定義事件的發射
 
