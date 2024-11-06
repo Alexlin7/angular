@@ -13,7 +13,7 @@
 === 進階
 * link:Routing.html[設定路由]
 * link:Tools.html[工具介紹]
-* link:link:angular.json&啟動流程.html[angular.json & 啟動流程]
+* link:angular.json&啟動流程.html[angular.json & 啟動流程]
 
 == 雜項 踩雷紀錄
 
