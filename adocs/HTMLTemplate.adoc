@@ -170,6 +170,7 @@ image::../image/output1.jpg["圖片"]
 @Output() updateNameFun = new EventEmitter<string>();
 
 ----
+
 2. 在該元件上註冊此事件的監聽
 
 [source,typescript]
