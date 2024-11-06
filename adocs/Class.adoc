@@ -113,6 +113,15 @@ export class AppComponent {
 </button>
 ----
 
+=== Change Detection
+
+Change Detection 在以下情況下觸發: 
+
+1. 事件觸發。
+2. 非同步操作完成。
+3. 手動觸發 `ChangeDetectorRef.detectChanges()`。
+
+
 - 定義元件的生命週期:
 
 [source,typescript]
