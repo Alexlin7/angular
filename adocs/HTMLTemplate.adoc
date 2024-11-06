@@ -231,15 +231,15 @@ image::../image/output.png["圖片"]
 
 - ()=> 用於將模板中的事件綁定到元件中的方法上。
 
-- [()] => 將屬性綁定和事件綁定結合起來，實現雙向綁定。
+- [()] => 將屬性綁定和事件綁定結合起來，實現跨元件的雙向綁定。
 
 實現方式:
-實際上靠@Input與@Output就可以達成雙向綁定了，但是angular提供
+實際上靠@Input與@Output就可以達成跨元件的雙向綁定了，但是angular提供
 "[()]"語法糖。
 
 image::../image/twowayBind_sugar.jpg["圖片"]
 
-1.自定義
+- 跨元件的雙向綁定
 
 ===== 使用@Output與@Input建立雙向綁定
 
@@ -321,7 +321,7 @@ export class ChildComponent {
 .使用@Output與@Input綁定
 image::../image/two-way-bind-with-input-and-output.gif[使用@Output與@Input綁定後]
  
-2.ngModel
+- 元件內部的雙向綁定ngModel
 .app.component.ts
 [source,javascript]
 ----
