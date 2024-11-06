@@ -73,11 +73,34 @@ count.set(100);
 
 如果要先拿到過去的資料來進行加減異動並更新的話有以下兩種方式
 
-.set
+.test1.component.ts
 [source, typescript]
 ----
-count.set(count() + 100);
+@Component({
+  selector: 'app-test1',
+  standalone: true,
+  imports: [],
+  templateUrl: './test1.component.html',
+  styleUrl: './test1.component.css'
+})
+export class Test1Component {
+  count: WritableSignal<number> = signal(0); // 設定為O
+
+  onClick() {
+    this.count.set(this.count() + 1);
+  }
+}
 ----
+
+.test1.component.html
+[source, html]
+----
+<div>{{ count() }}</div>
+<button (click)="onClick()">+</button>
+----
+
+.結果展示
+image::../image/signal範例一.gif[結果展示]
 
 另一項更簡單的方法是使用本身所提供的update方法來做操作
 .set
