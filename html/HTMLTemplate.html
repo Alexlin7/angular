@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.22">
+<meta name="generator" content="Asciidoctor 2.0.23">
 <title>HTML模板 (Template)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -651,24 +651,16 @@ export class UserComponent {
 <img src="../image/output1.jpg" alt="圖片">
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>使用"@Output"客製化新事件</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>1.使用"@Output"客製化新事件</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-typescript" data-lang="typescript">@Output() updateNameFun = new EventEmitter&lt;string&gt;();</code></pre>
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>在該元件上註冊此事件的監聽</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>2.在該元件上註冊此事件的監聽</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -690,17 +682,13 @@ export class UserComponent {
 <div class="title">Note</div>
 </td>
 <td class="content">
-此事件只能綁定在"@Output定義的元件上"
+此事件只能綁定在"@Output定義的元件上，如果你想要在其他元素綁定此事件監聽器無法達到預想的效果"
 </td>
 </tr>
 </table>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>執行自定義事件的發射</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>3.執行自定義事件的發射</p>
 </div>
 <div class="paragraph">
 <p>藉由@Output的宣告為事件發射器，故需要透過此物件來做事件傳遞(emit)</p>
@@ -779,18 +767,23 @@ test(){ // 此層的事件
 </div>
 <div class="paragraph">
 <p>實現方式:
-- ngModel:  ngModel 是 Angular 提供的雙向綁定指令，它會建立一個 FormControl 來管理綁定的值。
-- 髒值檢查:  Angular 會定期檢查所有綁定的屬性，一旦發現有變化，就會觸發重新渲染。
-- 事件監聽:  Angular 會在綁定的元素上添加事件監聽器，當使用者與元素互動時，就會觸發事件，並更新對應的元件資料。</p>
+實際上靠@Input與@Output就可以達成雙向綁定了，但是angular提供
+"[()]"語法糖。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../image/twowayBind_sugar.jpg" alt="圖片">
+</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>自定義
-===== 使用@Output與@Input建立雙向綁定</p>
+<p>自定義</p>
 </li>
 </ol>
 </div>
+<div class="sect4">
+<h5 id="_使用output與input建立雙向綁定">使用@Output與@Input建立雙向綁定</h5>
 <div class="paragraph">
 <p>父Component</p>
 </div>
@@ -931,6 +924,7 @@ ngModel 是 Angular 中最常用的雙向綁定指令，但它並不是唯一建
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="_補充">補充:</h3>
 <div class="paragraph">
@@ -945,7 +939,7 @@ ngModel 是 Angular 中最常用的雙向綁定指令，但它並不是唯一建
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-06 10:47:44 +0800
+Last updated 2024-11-06 13:28:50 +0800
 </div>
 </div>
 </body>
