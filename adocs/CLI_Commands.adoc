@@ -498,6 +498,8 @@ app/
 └── test.resolver.spec.ts
 ----
 
+
+
 === `ng generate service`
 會產生 Angular 的服務，通常會用來實作一些商業邏輯、數據處理、HTTP請求等功能
 
@@ -512,7 +514,7 @@ app/
 
 === `ng generate service-worker`
 
-用來為 Angular 添加 Service Worker 支援的指令，可以讓應用程式具有離線運行能力、快取資源、接收推送通知等 PWA (Progressive Web App) 功能。
+用來為 Angular 添加 Service Worker 的配置，使用此指令時就會自動將Service Worker 註冊到應用程式，可以讓應用程式具有離線運行能力、快取資源、接收推送通知等 PWA (Progressive Web App) 功能。
 
 ==== 產生檔案
 ----
@@ -520,6 +522,9 @@ your-workspace/
 ├── ...
 └── ngsw-config.json
 ----
+
+啟動伺服器後在開發者工具的 Application 的 Service Worker 中就會看到已經註冊上去的 Service-Worker
+image:../image/service-worker_test.png[service-worker_test]
 
 - `ngsw-config.json`: Service Worker的配置文件
 
