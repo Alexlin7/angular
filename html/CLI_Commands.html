@@ -500,7 +500,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://angular.dev/cli/generate/app-shell" target="_blank" rel="noopener"><code>app-shell</code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>生成一個Server Side的應用程式</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>生成應用程式的App Shell</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://angular.dev/cli/generate/application" target="_blank" rel="noopener"><code>application</code></a></p></td>
@@ -572,15 +572,638 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="_ng_generate_app_shell"><code>ng generate app-shell</code></h3>
+<div class="paragraph">
+<p>會用來產生 app shell 元件，此元件主要用來在應用程式初始載入時快速啟動靜態渲染頁面，實現出在實際內容載入前先顯示出應用程式基本骨架給使用者看</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>生成檔案結構</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>src
+├── app
+│   ├── app.config.server.ts
+│   └── app-shell
+│       ├── app-shell.component.html
+│       ├── app-shell.component.css
+│       ├── app-shell.component.spec.ts
+│       └── app-shell.component.ts
+└── main.server.ts</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">檔案</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">app.config.server.ts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>應用程式中的伺服器端配置檔案，主要用於設定 Server-Side Rendering 相關的配置</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">app-shell.component.html</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>app-shell要渲染的樣板內容</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">app-shell.component.css</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>app-shell渲染內容的樣式</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">app-shell.component.spec</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>app-shell的單元測試</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">app-shell.component.ts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>App Shell 功能的核心元件</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">main.server.ts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>應用程式伺服器端的進入點</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_application_name"><code>ng generate application [name]</code></h3>
+<div class="paragraph">
+<p>會在專案的projects資料夾下產生新的應用程式，當專案需要多應用程式時才會使用到，例如店商網站會有不同品牌的商品，但都使用相同的應用程式邏輯</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>生成檔案</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>projects/
+└── application/
+    ├── public/
+    ├── src/
+    |   └── ...
+    ├── tsconfig.app.json
+    └── tsconfig.spec.json</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>除了一些共用的依賴與angular配置以外基本上檔案都跟初始應用程式是一樣的</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_class_name"><code>ng generate class [name]</code></h3>
+<div class="paragraph">
+<p>分別產生class檔案與class的單元測試檔案</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>生成檔案</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>app/
+├── ...
+├── class.ts
+└── class.spec.ts</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_component_name"><code>ng generate component [name]</code></h3>
+<div class="paragraph">
+<p>產生一般的Angular元件</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_config"><code>ng generate config</code></h3>
+<div class="paragraph">
+<p>產生一些配置檔案</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>karma.config.js: 用來設定單元測試環境</p>
+</li>
+<li>
+<p>.browserslistrc: 與瀏覽器相關的相容性配置</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_directive_name"><code>ng generate directive [name]</code></h3>
+<div class="paragraph">
+<p>用來生成自訂的屬性指令，此指令是用來改變DOM元素行為或是外觀</p>
+</div>
+<div class="paragraph">
+<p><code>生成檔案</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>app/
+├── ...
+├── test.directive.ts
+└── test.directive.spec.ts  // 單元測試用</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>testDir.directive.ts</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">import {Directive, ElementRef} from '@angular/core';
+@Directive({
+    standalone: true,
+    selector: '[appHighlight]',
+})
+export class HighlightDirective {
+    constructor(private el: ElementRef) {
+        this.el.nativeElement.style.backgroundColor = 'yellow';
+    }
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>透過@Directive裝飾器將此元件變為屬性指令</p>
+</li>
+<li>
+<p>設定selector屬性作為屬性名稱</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>app.component.html</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;p appHighlight&gt;Highlight me!&lt;/p&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>當html使用了屬性指令，便會執行元件的constructor，上述文字會變換成黃色</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_enum_name"><code>ng generate enum [name]</code></h3>
+<div class="paragraph">
+<p>會產生通用的列舉</p>
+</div>
+<div class="paragraph">
+<p><code>生成檔案</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>app/
+├── ...
+└── testEnum.ts</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_environments"><code>ng generate environments</code></h3>
+<div class="paragraph">
+<p>會產生 Angular 環境的配置文件，用來管理不同環境下的環境變數</p>
+</div>
+<div class="paragraph">
+<p><code>生成檔案</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>src/
+├── ...
+└── environments/
+    ├── environment.development.ts
+    └── environment.ts // 默認環境，通常為production</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_簡單範例">簡單範例</h4>
+<div class="paragraph">
+<p><code>environment.ts</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">export const environment = {
+    env: "pro"
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>environment.development.ts</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">export const environment = {
+    env: "dev"
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>分別在不同環境下設定相同的環境變數名，變數值表示當前的環境</p>
+</div>
+<div class="paragraph">
+<p><code>app.component.ts</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { environment } from '../environments/environment'; // 匯入環境變數配置
+
+@Component({
+    selector: 'app-root',
+    standalone: true,
+    imports: [RouterOutlet],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
+})
+export class AppComponent {
+    title = 'appcli';
+    env = environment.env; // 取得當前的環境內容
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>app.component.html</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;h1&gt;{{ env }}&lt;/h1&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>當伺服器使用 production 配置啟動，標題會顯示pro，若使用 development 配置啟動，標題則會是dev</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_自訂環境">自訂環境</h4>
+<div class="paragraph">
+<p>也可以自訂 Angular 的執行環境</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>新增自訂環境配置:</p>
+<div class="paragraph">
+<p>在 <code>angular.json</code> 下的 <code>/architect/build/configurations</code> 新增 <code>testenv</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"testenv": {}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>在 <code>environments/</code> 下新增自訂環境配置檔 <code>environment.testenv.ts</code></p>
+<div class="paragraph">
+<p><code>environment.testenv.ts</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">export const environment = {
+    env: "testenv"
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>在 <code>angular.json</code> 的 <code>testenv</code> 配置下新增 fileReplacements，用來替換 environment 檔案</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"testenv":{
+    "fileReplacements": [
+        {
+            "replace": "src/environments/environment.ts",
+            "with": "src/environments/environment.testenv.ts"
+        }
+    ]
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>replace: 設定要替換的environment，通常預設為environment.ts，所以都會是替換此檔案</p>
+</li>
+<li>
+<p>with: 設定要替換成哪個environment，換成剛新增的 <code>environment.testenv.ts</code> 即可</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>使用自訂的環境配置啟動伺服器</p>
+<div class="listingblock">
+<div class="content">
+<pre>ng serve --configuration=testenv</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>此時 <code>&lt;h1&gt;</code> 標籤的內容就會變成 testenv</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_guard_name"><code>ng generate guard [name]</code></h3>
+<div class="paragraph">
+<p>會產生 Angular 的路由防衛，用來保護路由，控制使用者是否可以訪問特定頁面</p>
+</div>
+<div class="paragraph">
+<p>輸入指令時預設會有四個 Route Guard 選項:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CanActivate: 控制是否可以訪問該路由</p>
+</li>
+<li>
+<p>CanActivateChild: 控制是否可以訪問子路由</p>
+</li>
+<li>
+<p>CanDeactivate: 控制是否可以離開路由</p>
+</li>
+<li>
+<p>CanMatch: 控制是否可以匹配該路由</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>生成檔案</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>app/
+├── ...
+├── test.guard.ts
+└── test.guard.spec.ts // 單元測試用</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_interceptor"><code>ng generate interceptor</code></h3>
+<div class="paragraph">
+<p>會產生出 Angular 的請求攔截器，當應用程式發出request請求時都會先經過攔截器的處理</p>
+</div>
+<div class="paragraph">
+<p><code>生成檔案</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>app/
+├── ...
+├── test.interceptor.ts
+└── test.interceptor.spec.ts // 單元測試用</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>使用前需要先設定provider</p>
+</div>
+<div class="paragraph">
+<p><code>app.config.ts</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">export const appConfig: ApplicationConfig = {
+    providers: [
+        provideHttpClient(
+            withInterceptors([testInterceptor])
+        )
+    ]
+};</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_簡單範例_2">簡單範例</h4>
+<div class="paragraph">
+<p>在攔截器裡新增標頭內容</p>
+</div>
+<div class="paragraph">
+<p><code>test.interceptor.ts</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">import { HttpInterceptorFn } from '@angular/common/http';
+
+export const testInterceptor: HttpInterceptorFn = (req, next) =&gt; {
+    console.log(req);
+    console.log("Interceptor is running");
+    const newReq = req.clone({
+        headers: req.headers.set('X-New-Header', 'new header value')
+    });
+    console.log(newReq);
+    return next(newReq);
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../image/interceptor_test.png" alt="interceptor_test"></span></p>
+</div>
+<div class="paragraph">
+<p>當應用程式發出 request 時毀被攔截器先攔截下來， 上述範例將發出去的 request 在攔截器當中新增 header 的內容，最後再把新的 request 給繼續發出去</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_設定多個攔截器">設定多個攔截器</h4>
+<div class="paragraph">
+<p><code>app.config.ts</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-typescript" data-lang="typescript">export const appConfig: ApplicationConfig = {
+    providers: [
+        provideHttpClient(
+            withInterceptors([
+                testInterceptor1,
+                testInterceptor2,
+                testInterceptor3,
+                testInterceptor4
+            ])
+        )
+    ]
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>若設定多個攔截器則會按照陣列順序依序攔截request<br>
+testInterceptor1 &#8594; testInterceptor2 &#8594; testInterceptor3 &#8594; testInterceptor4</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_library_name"><code>ng generate library [name]</code></h3>
+<div class="paragraph">
+<p>會創建 Angular 函式庫，建立可重複使用的元件、服務或其他功能，並且可發布到 npm 提供其他專案使用</p>
+</div>
+<div class="sect3">
+<h4 id="_生產檔案">生產檔案</h4>
+<div class="listingblock">
+<div class="content">
+<pre>your-workspace/
+├── projects/
+│   ├── my-lib/
+│   │   ├── src/
+│   │   │   ├── lib/
+│   │   │   │   ├── my-lib.component.ts
+│   │   │   │   ├── my-lib.component.spec.ts
+│   │   │   │   ├── my-lib.service.ts
+│   │   │   │   └── my-lib.service.spec.ts
+│   │   │   └── public-api.ts
+│   │   ├── ng-package.json
+│   │   ├── package.json
+│   │   ├── tsconfig.lib.json
+│   │   ├── tsconfig.lib.prod.json
+│   │   └── tsconfig.spec.json
+└── package.json</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_檔案說明">檔案說明</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">檔案</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">public-api.ts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>函式庫的公開 API 入口點，用來決定哪些內容要對外公開讓使用者使用</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng-package.json</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>用來配置如何打包 Angular 函式庫的配置檔，使用 ng-packagr 工具將函式庫編譯打包成符合 Angular Package Format (APF) 的格式</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_module_name"><code>ng generate module [name]</code></h3>
+<div class="paragraph">
+<p>產生 Angular 的模組，模組是用來封裝各種元件、服務、管道等多功能集合。</p>
+</div>
+<div class="sect3">
+<h4 id="_生產檔案_2">生產檔案</h4>
+<div class="listingblock">
+<div class="content">
+<pre>app/
+├── ...
+└── test-module/
+    └── test-module.module</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_pipe_name"><code>ng generate pipe [name]</code></h3>
+<div class="paragraph">
+<p>會產生 Angular 的管道(Pipe)，管道通常用於轉換顯示的資料格式</p>
+</div>
+<div class="sect3">
+<h4 id="_生產檔案_3">生產檔案</h4>
+<div class="listingblock">
+<div class="content">
+<pre>app/
+├── ...
+├── test.pipe.ts
+└── test.pipe.spec.ts</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_resolver_name"><code>ng generate resolver [name]</code></h3>
+<div class="paragraph">
+<p>產生路由解析器，主要功能是在進入路由前先取得資料，確保元件在顯示時已經有需要的資料</p>
+</div>
+<div class="sect3">
+<h4 id="_生成檔案">生成檔案</h4>
+<div class="listingblock">
+<div class="content">
+<pre>app/
+├── ...
+├── test.resolver.ts
+└── test.resolver.spec.ts</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_service"><code>ng generate service</code></h3>
+<div class="paragraph">
+<p>會產生 Angular 的服務，通常會用來實作一些商業邏輯、數據處理、HTTP請求等功能</p>
+</div>
+<div class="sect3">
+<h4 id="_生成檔案_2">生成檔案</h4>
+<div class="listingblock">
+<div class="content">
+<pre>app/
+├── ...
+├── test.service.ts
+└── test.service.spec.ts</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ng_generate_service_worker"><code>ng generate service-worker</code></h3>
+<div class="paragraph">
+<p>用來為 Angular 添加 Service Worker 支援的指令，可以讓應用程式具有離線運行能力、快取資源、接收推送通知等 PWA (Progressive Web App) 功能。</p>
+</div>
+<div class="sect3">
+<h4 id="_產生檔案">產生檔案</h4>
+<div class="listingblock">
+<div class="content">
+<pre>your-workspace/
+├── ...
+└── ngsw-config.json</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>會生成Service Worker的配置文件</p>
+</div>
 <div class="paragraph">
 <p><a href="index.html">回首頁</a></p>
 </div>
 </div>
 </div>
 </div>
+</div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-04 14:29:53 +0800
+Last updated 2024-11-06 09:04:21 +0800
 </div>
 </div>
 </body>

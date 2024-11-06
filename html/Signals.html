@@ -577,17 +577,45 @@ export class Test1Component {
 <div class="content">
 <pre class="highlight"><code class="language-typescript" data-lang="typescript">import { signal, computed } from '@angular/core';// 需要import computed
 
-price: WritableSignal&lt;number&gt; = signal(100);
-quantity: WritableSignal&lt;number&gt; = signal(2);
+  count: WritableSignal&lt;number&gt; = signal(20);
+  count2: WritableSignal&lt;number&gt; = signal(15);
+  // 創建計算值
+  sum = computed(() =&gt; this.count() * this.count2())
 
-// 創建計算值
-total: Signal&lt;number&gt; = computed(() =&gt; this.price() * this.quantity());
+  onClick() {
+    this.count.update(count =&gt; count + 1); //當按下Click時 count + 1 並且 sum 也會被重新計算
 
-console.log(total()); // 輸出: 200</code></pre>
+  }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;div&gt;{{ count() }}&lt;/div&gt;
+&lt;button (click)="onClick()"&gt;+&lt;/button&gt;
+&lt;div&gt;{{ sum() }}&lt;/div&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p><code>computed()</code> 在呼叫時需要傳入一個 callback function，在此 function 內的 signal 發生變化時，這個 callback function 就會自動被呼叫，因此我們可以在 signal 有變化時，才去根據來源 signal 產生新結果</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../image/signal測試.gif" alt="展示畫面">
+</div>
+<div class="title">Figure 1. 展示畫面</div>
+</div>
+<div class="paragraph">
+<p>參考資料:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://fullstackladder.dev/blog/2023/05/07/introduction-angular-signals/">簡介Signal</a></p>
+</li>
+<li>
+<p><a href="https://fullstackladder.dev/blog/2023/05/07/introduction-angular-signals/">官方文檔</a></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p><a href="Tools.html">回上一頁</a></p>
@@ -599,7 +627,7 @@ console.log(total()); // 輸出: 200</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-04 14:31:31 +0800
+Last updated 2024-11-06 09:07:53 +0800
 </div>
 </div>
 </body>

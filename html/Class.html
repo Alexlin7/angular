@@ -726,12 +726,59 @@ export class ItemComponent {
 </tr>
 </tbody>
 </table>
+<div class="imageblock">
+<div class="content">
+<img src="../image/execution_order.png" alt="Angular 初始化元件的執行順序">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+此情況只討論一個元件只包含一個元件，若包含多個元件可能還會受到其他因素影響，例如:load配置以及@defer
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../image/Duringinitialization.jpg" alt="Angular 元件初始化的生命週期流程">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>實作範例
+這個例子是在appcomponet底下加入一個子元件test的簡單範例，並且兩個元件都有實作所有生命週期的方法，藉此來觀察執行狀況</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../image/initExe.jpg" alt="初始化實作">
+</div>
+</div>
 <div class="paragraph">
 <p>在初始化結束後，元件的生命週期就會變成如下圖:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../image/subsequent_updates.png" alt="Angular 元件初始化後的生命週期階段">
+<img src="../image/updated.jpg" alt="Angular 初始化之後的更新">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>實作範例</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../image/updateExe.jpg" alt="初始化之後的更新的實作">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -961,7 +1008,7 @@ export class ChildComponent {}</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-04 14:29:43 +0800
+Last updated 2024-11-06 09:04:18 +0800
 </div>
 </div>
 </body>
