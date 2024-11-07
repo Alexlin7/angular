@@ -1,0 +1,33 @@
+= First App - Hello World
+
+此項專案為Angular 18 tutorial的練習專案完成版，可在做完官方教學之後來使用此專案進行對比。
+
+link:https://angular.dev/tutorials/first-app[tutorials連結]
+
+== 安裝依賴
+
+首先，安裝所需的 Node 模組依賴：
+[source,bash]
+----
+npm install
+----
+
+由於後端的模擬 API 服務是使用 JSON Server，所以也需要安裝 JSON Server：
+[source,bash]
+----
+npm install -g json-server
+----
+
+== 啟動應用程式
+
+啟動 JSON Server：
+[source,bash]
+----
+json-server --watch db.json
+----
+
+啟動應用程式：
+[source,bash]
+----
+ng serve
+----
