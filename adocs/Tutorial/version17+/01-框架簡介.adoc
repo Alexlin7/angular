@@ -1,0 +1,1 @@
+以Standalone作為核心的系統開發流程中，原先大部分被app.module.ts進行引用與管理的絕大部分都被抽離至app.config.ts進行application層級的使用，而非在原先的NgModule進行管理
