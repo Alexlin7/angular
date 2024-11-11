@@ -46,3 +46,18 @@
 . typescript的列舉有甚麼爭議和問題?
 . 甚麼時間點用 lib 甚麼時間點用 module ?
 . 甚麼時候用resolver 甚麼時間點用 interceptor ?
+
+== 第四次報告回饋
+
+. angular生命週期其他人的資料是如何證明的(可以先不深入研究)
+. 官方設計declarations的用意與目的是甚麼?
+. defult export 有什麼?
+. @Output的事件監聽再補充詳細一點
+. 為甚麼雙向綁定監聽器一定是click?
+. 把雙向綁定[(data)]和"data"命名換成不一樣的，用做區分
+. ? [] 綁定是否可以透過js來重新渲染?
+. enum: ts當中需要設定屬性，但是在一個例子當中value可以是
+. length 
+. 轉為js的宣告方式
+. as a const
+. 抓出需要講解的章節
