@@ -225,6 +225,8 @@ app/
 └── testEnum.ts
 ----
 
+link:enum.html[TypeScript列舉介紹與問題]
+
 === `ng generate environments`
 
 會產生 Angular 環境的配置文件，用來管理不同環境下的環境變數

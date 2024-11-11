@@ -1,0 +1,250 @@
+== TypeScript 列舉介紹與問題(enum)
+
+=== 列舉介紹
+
+列舉通常用在取值在一定的限定範圍內(ex: 一週天數、月份的天數)
+
+
+[source,typescript]
+----
+enum Days {Sun, Mon, Tue, Wed, Thu, Fri, Sat};
+
+console.log(Days.Mon) // 1
+----
+
+列舉的值會從0開始依序往上遞增，因此上述Mon的值為1
+
+也可以透過手動賦值給予，並依當前的值往上遞增
+
+[source,typescript]
+----
+enum Days {Sun = 7, Mon, Tue, Wed, Thu, Fri = 1, Sat};
+
+console.log(Days.Sun) // 7
+console.log(Days.Mon) // 8
+console.log(Days.Fri) // 1
+console.log(Days.Sat) // 2
+----
+
+列舉當中的值也可以不是數字，但後項的值必須要手動初始化，不然會報錯
+
+[source,typescript]
+----
+enum Days {Sun, Mon = "Monday", Tue = 2, Wed, Thu, Fri, Sat};
+
+console.log(Days.Mon) // Monday
+----
+
+==== 常數項 & 計算所得項
+列舉當中的成員可以分為兩種型別: 常數項(constant member)、計算所得項(computed member)
+
+===== 常數項
+
+當滿足以下條件列舉成員會被視為常數項:
+
+- 當前成員是由前項成員的值自動遞增 `1` 的結果，第一項成員是例外，若第一項無初始值會自動賦值 `0`
++
+[source,typescript]
+----
+enum TestEnum {A, B, C}; // A、B、C皆為常數項
+----
+
+- 列舉成員使用常數列舉表達式初始化
+
+. 數字字面量
++
+[source,typescript]
+----
+enum TestEnum {
+    A = 0, 
+    B = 1, 
+    C = 2
+};
+----
+
+. 一元運算式
++
+[source,typescript]
+----
+enum TestEnum {
+    A = 1, 
+    B = -1, 
+    C = ~1
+};
+----
+
+. 二元運算式
++
+[source,typescript]
+----
+enum TestEnum {
+    A = 1 + 1, 
+    B = 2 * 3, 
+    C = 10/5, 
+    D = 32>>2
+};
+----
+
+. 參考之前定義的常數列舉成員
++
+[source,typescript]
+----
+enum TestEnum {
+    A, 
+    B = A, 
+    C = B + 2, 
+    D = A + B * C
+};
+----
+
+除了上述以外的列舉成員皆會被視為**運算所得項**
+
+===== 運算所得項
+
+非常數項表達式的成員皆為運算所得項
+
+[source,typescript]
+----
+enum TestEnum {
+    A,
+    B = "test".lengh,
+    C = 3,
+    D
+};
+----
+
+上述範例中只有B不為常數項，所以B是計算所得項
+
+NOTE: 計算所得項的後項成員也必須手動初始化，不然會報錯
+
+==== 常數列舉
+
+要宣告一個常數列舉只要使用 `const` 關鍵字即可
+
+[source,typescript]
+----
+const enum Days {Sun, Mon, Tue, Wed, Thu, Fri, Sat};
+----
+
+- 常數列舉要點:
+
+. 在編譯時期會被刪除，一般的列舉則不會
+. 成員只能是常數項，不得是計算所得項
++
+[source,typescript]
+----
+const enum Days {
+    Sun, 
+    Mon = 1,
+    Tue = "Tuesday".lengh, // 只有這裡會報錯 
+    Wed = -5000, 
+    Thu = 100, 
+    Fri = Thu * 30, 
+    Sat
+};
+----
+
+=== TypeScript 列舉的爭議問題
+
+TypeScript的列舉雖然看起來跟大部分程式的列舉差不多，但實際上是有存在一些問題的
+
+. 大量的程式碼
++
+雖然 TypeScript 列舉的程式碼量看起來簡潔清楚，但當程式轉譯為 JavaScript 的時候就不是這麼一回事了
++
+`TypeScript`
++
+[source,typescript]
+----
+enum Days {Sun, Mon, Tue, Wed, Thu, Fri, Sat};
+----
++
+`編譯成JavaScript`
++
+[source,javascript]
+----
+var Days;
+(function (Days) {
+    Days[Days["Sun"] = 0] = "Sun";
+    Days[Days["Mon"] = 1] = "Mon";
+    Days[Days["Tue"] = 2] = "Tue";
+    Days[Days["Wed"] = 3] = "Wed";
+    Days[Days["Thu"] = 4] = "Thu";
+    Days[Days["Fri"] = 5] = "Fri";
+    Days[Days["Sat"] = 6] = "Sat";
+})(Days || (Days = {}));
+----
++
+每個列舉都要轉換成更大量的程式碼且還難以閱讀，會使整個打包後的容量變得更重。
+
+. 可重新定義成員
++
+通常情況下列舉成員應該要是不能被重新定義的，但在 TypeScript 是可以的
++
+[source,typescript]
+----
+enum Days {Sun, Mon, Tue, Wed, Thu, Fri, Sat};
+
+console.log(Days.Mon); // 1
+
+(Days as any).Mon = 100;
+
+console.log(Days.Mon); // 100
+----
++
+上述兩點雖然可以透過宣告常數列舉解決問題，但 TypeScript 列舉本身還是會有一些要注意的問題
+
+. 重複的值
++
+列舉成員的值是可以重複的，TypeScript 是不會去檢查這點的。
++
+[source,typescript]
+----
+enum Days {Sun, Mon = 3, Tue = 1, Wed, Thu, Fri, Sat};
+
+console.log(Days.Mon); // 3
+console.log(Days.Thu); // 3
+----
+
+. 與isolatedModules不相容
++
+isolatedModules的特性是在編譯階段時是不能跨文件讀取的，每個文件必須獨立編譯，但是 `const enum` 的特性在編譯完後會被刪除掉，所以在編譯時期必須要跨檔案讀取的，因此就會與isolatedModules模式發生衝突，若今天在一個供他人使用的模組裡使用了 `const enum` ，那就會導致使用者的程式發生錯誤
+
+`TypeScript`
+
+[source,typescript]
+----
+const enum Days {Sun, Mon, Tue, Wed, Thu, Fri, Sat};
+
+console.log(Days.Mon);
+----
+
+`JavaScript`
+[source,javascript]
+----
+;
+console.log(1 /* Days.Mon */);
+----
+
+=== 替代方案
+
+[source,typescript]
+----
+const Days = {
+    Sun: 7,
+    Mon: 1,
+    Tue: 2,
+    Wed: 3, 
+    Thu: 4, 
+    Fri: 5,
+    Sat: 6
+} as const;
+
+type Days = typeof Days[keyof typeof Days];
+
+console.log(Days.Mon) // 1
+----
+
+使用上述方法就可以讓 Typecsript 在不使用 enum 的情況下也能有類似 TypeScript enum 的功能在
+
+
