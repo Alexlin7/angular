@@ -107,7 +107,7 @@ enum TestEnum {
 ----
 enum TestEnum {
     A,
-    B = "test".lengh,
+    B = "test".length,
     C = 3,
     D
 };
@@ -136,7 +136,7 @@ const enum Days {Sun, Mon, Tue, Wed, Thu, Fri, Sat};
 const enum Days {
     Sun, 
     Mon = 1,
-    Tue = "Tuesday".lengh, // 只有這裡會報錯 
+    Tue = "Tuesday".length, // 只有這裡會報錯 
     Wed = -5000, 
     Thu = 100, 
     Fri = Thu * 30, 
