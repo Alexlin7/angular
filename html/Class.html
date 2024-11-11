@@ -746,11 +746,6 @@ export class ItemComponent {
 </tr>
 </tbody>
 </table>
-<div class="imageblock">
-<div class="content">
-<img src="../image/execution_order.png" alt="Angular 初始化元件的執行順序">
-</div>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -763,22 +758,13 @@ export class ItemComponent {
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>實作範例 :
+這個例子是在appcomponet底下加入一個子元件test的簡單範例，並且兩個元件都有實作所有生命週期的方法，藉此來觀察執行狀況</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="../image/Duringinitialization.jpg" alt="Angular 元件初始化的生命週期流程">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>實作範例
-這個例子是在appcomponet底下加入一個子元件test的簡單範例，並且兩個元件都有實作所有生命週期的方法，藉此來觀察執行狀況</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../image/initExe.jpg" alt="初始化實作">
 </div>
 </div>
 <div class="paragraph">
@@ -786,15 +772,11 @@ export class ItemComponent {
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../image/updated.jpg" alt="Angular 初始化之後的更新">
+<img src="../image/execution_order.png" alt="Angular 初始化元件的執行順序">
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>實作範例</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>實作範例 :</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -902,6 +884,18 @@ export class ChildComponent {
 <ul>
 <li>
 <p>NgModule<br>
+屬性介紹</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>declarations : 宣告有甚麼東西(Component、Pipe、Directive)"屬於"這個module，所以一個東西不能被多個module 宣告。
+image::../image/mutiDeclar.jpg[module]</p>
+</li>
+<li>
+<p>exports : 決定這個module被其他地方引入時的會開放的東西或module</p>
+</li>
+<li>
+<p>imports : 這個module要引入的東西或module
 <code>@NgModule</code> 是一個核心裝飾器，用來定義應用程式的 <code>Module</code> ，當中會宣告不同的元件、指令、服務或依賴其他的 <code>Module</code> ，實現模組化和可重用的架構。<br>
 例如，創建一個 <code>SharedModule</code> ，其中包含多個可以重用的元件。</p>
 <div class="listingblock">
@@ -930,6 +924,9 @@ import { OrdersPipe } from './orders.pipe';
 })
 export class SharedModule { }</code></pre>
 </div>
+</div>
+</li>
+</ol>
 </div>
 </li>
 </ul>
@@ -1028,7 +1025,7 @@ export class ChildComponent {}</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-06 15:09:00 +0800
+Last updated 2024-11-11 13:19:37 +0800
 </div>
 </div>
 </body>
