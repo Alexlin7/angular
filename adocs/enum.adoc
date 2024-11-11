@@ -247,4 +247,4 @@ console.log(Days.Mon) // 1
 
 使用上述方法就可以讓 Typecsript 在不使用 enum 的情況下也能有類似 TypeScript enum 的功能在
 
-
+link:CLI_Commands.html[回上一頁]
