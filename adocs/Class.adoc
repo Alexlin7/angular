@@ -286,6 +286,11 @@ export class ChildComponent {
 . 模組化架構
 +
     * NgModule +
+屬性介紹
+1. declarations : 宣告有甚麼東西(Component、Pipe、Directive)"屬於"這個module，所以一個東西不能被多個module 宣告。
+image::../image/mutiDeclar.jpg[module]
+2. exports : 決定這個module被其他地方引入時的會開放的東西或module
+3. imports : 這個module要引入的東西或module
     `@NgModule` 是一個核心裝飾器，用來定義應用程式的 `Module` ，當中會宣告不同的元件、指令、服務或依賴其他的 `Module` ，實現模組化和可重用的架構。 +
     例如，創建一個 `SharedModule` ，其中包含多個可以重用的元件。
 +
