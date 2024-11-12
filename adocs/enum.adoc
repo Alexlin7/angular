@@ -209,42 +209,58 @@ console.log(Days.Thu); // 3
 . 與isolatedModules不相容
 +
 isolatedModules的特性是在編譯階段時是不能跨文件讀取的，每個文件必須獨立編譯，但是 `const enum` 的特性在編譯完後會被刪除掉，所以在編譯時期必須要跨檔案讀取的，因此就會與isolatedModules模式發生衝突，若今天在一個供他人使用的模組裡使用了 `const enum` ，那就會導致使用者的程式發生錯誤
-
++
 `TypeScript`
-
++
 [source,typescript]
 ----
 const enum Days {Sun, Mon, Tue, Wed, Thu, Fri, Sat};
 
 console.log(Days.Mon);
 ----
-
++
 `JavaScript`
++
 [source,javascript]
 ----
 ;
 console.log(1 /* Days.Mon */);
 ----
 
+由於上述的各種問題導致 TypeScript 的列舉受到各種爭議，目前官方也是建議不要去使用列舉這項功能
+
 === 替代方案
 
 [source,typescript]
 ----
-const Days = {
-    Sun: 7,
+interface DaysEnum { // 使用介面限定成員型別
+    [key: string]: Number;
+}
+
+const Days: Readonly<DaysEnum> = { // 宣告Readonly將成員設為唯讀
+    Sun: 0,
     Mon: 1,
-    Tue: 2,
-    Wed: 3, 
-    Thu: 4, 
+    Tus: 2,
+    Wed: 3,
+    Thu: 4,
     Fri: 5,
     Sat: 6
-} as const;
+};
 
-type Days = typeof Days[keyof typeof Days];
-
-console.log(Days.Mon) // 1
+type Days = typeof Days[keyof typeof Days]; // 定義Days的型別
 ----
 
-使用上述方法就可以讓 Typecsript 在不使用 enum 的情況下也能有類似 TypeScript enum 的功能在
+使用上述方法就可以讓 TypeScript 在不使用 enum 的情況下也能有類似 TypeScript enum 的功能在
+
+[source,typescript]
+----
+console.log(Days.Mon); // 1
+
+function dayFun(day: Days) {
+    return day;
+}
+
+console.log(dayFun(Days.Fri)); // 5
+----
 
 link:CLI_Commands.html[回上一頁]
