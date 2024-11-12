@@ -263,4 +263,4 @@ function dayFun(day: Days) {
 console.log(dayFun(Days.Fri)); // 5
 ----
 
-link:CLI_Commands.html[回上一頁 ]
+link:CLI_Commands.html[回上一頁]
