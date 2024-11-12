@@ -356,6 +356,94 @@ app/
 └── test.guard.spec.ts // 單元測試用
 ----
 
+=== `ng generate library [name]`
+會創建 Angular 函式庫，建立可重複使用的元件、服務或其他功能，並且可發布到 npm 提供其他專案使用
+
+==== 生產檔案
+----
+your-workspace/
+├── projects/
+│   ├── my-lib/
+│   │   ├── src/
+│   │   │   ├── lib/
+│   │   │   │   ├── my-lib.component.ts
+│   │   │   │   ├── my-lib.component.spec.ts
+│   │   │   │   ├── my-lib.service.ts
+│   │   │   │   └── my-lib.service.spec.ts
+│   │   │   └── public-api.ts
+│   │   ├── ng-package.json
+│   │   ├── package.json
+│   │   ├── tsconfig.lib.json
+│   │   ├── tsconfig.lib.prod.json
+│   │   └── tsconfig.spec.json
+└── package.json
+----
+
+==== 檔案說明
+[cols="1,3", options="header"]
+|===
+| 檔案 | 描述
+
+| public-api.ts
+| **函式庫的公開 API 入口點，用來決定哪些內容要對外公開讓使用者使用**
+
+| ng-package.json
+| **用來配置如何打包 Angular 函式庫的配置檔，使用 ng-packagr 工具將函式庫編譯打包成符合 Angular Package Format (APF) 的格式**
+
+|===
+
+=== `ng generate module [name]`
+產生 Angular 的模組，模組是用來封裝各種元件、服務、管道等多功能集合。
+
+==== 生產檔案
+
+----
+app/
+├── ...
+└── test-module/
+    └── test-module.module
+----
+
+==== library & module 總結
+
+===== library
+
+. 通常用在跨專案的共同程式碼
+. 同時包含多個module與各元件
+. 可以發佈到npm上供其他人使用
+
+===== module
+
+. 主要用在單個應用程式內
+. 應用程式內的功能分組
+. 組織和封裝相關的元件、服務、管道等
+
+=== `ng generate pipe [name]`
+
+會產生 Angular 的管道(Pipe)，管道通常用於轉換顯示的資料格式
+
+==== 生產檔案
+
+----
+app/
+├── ...
+├── test.pipe.ts
+└── test.pipe.spec.ts
+----
+
+=== `ng generate resolver [name]`
+
+產生路由解析器，主要功能是在進入路由前先取得資料，確保元件在顯示時已經有需要的資料
+
+==== 生成檔案
+
+----
+app/
+├── ...
+├── test.resolver.ts
+└── test.resolver.spec.ts
+----
+
 === `ng generate interceptor`
 
 會產生出 Angular 的請求攔截器，當應用程式發出request請求時都會先經過攔截器的處理
@@ -427,81 +515,23 @@ export const appConfig: ApplicationConfig = {
 若設定多個攔截器則會按照陣列順序依序攔截request +
 testInterceptor1 -> testInterceptor2 -> testInterceptor3 -> testInterceptor4
 
-=== `ng generate library [name]`
-會創建 Angular 函式庫，建立可重複使用的元件、服務或其他功能，並且可發布到 npm 提供其他專案使用
+==== interceptor & resolver 總結
 
-==== 生產檔案
-----
-your-workspace/
-├── projects/
-│   ├── my-lib/
-│   │   ├── src/
-│   │   │   ├── lib/
-│   │   │   │   ├── my-lib.component.ts
-│   │   │   │   ├── my-lib.component.spec.ts
-│   │   │   │   ├── my-lib.service.ts
-│   │   │   │   └── my-lib.service.spec.ts
-│   │   │   └── public-api.ts
-│   │   ├── ng-package.json
-│   │   ├── package.json
-│   │   ├── tsconfig.lib.json
-│   │   ├── tsconfig.lib.prod.json
-│   │   └── tsconfig.spec.json
-└── package.json
-----
+===== resolver
 
-==== 檔案說明
-[cols="1,3", options="header"]
-|===
-| 檔案 | 描述
+. 在路由啟動前先行執行
 
-| public-api.ts
-| **函式庫的公開 API 入口點，用來決定哪些內容要對外公開讓使用者使用**
+. 用在啟動路由前預載入資源
 
-| ng-package.json
-| **用來配置如何打包 Angular 函式庫的配置檔，使用 ng-packagr 工具將函式庫編譯打包成符合 Angular Package Format (APF) 的格式**
+. 作用於特定路由上 
 
-|===
+===== interceptor
 
-=== `ng generate module [name]`
-產生 Angular 的模組，模組是用來封裝各種元件、服務、管道等多功能集合。
+. 在發出 http 請求前先執行
 
-==== 生產檔案
+. 常用於權限驗證、或錯誤處理
 
-----
-app/
-├── ...
-└── test-module/
-    └── test-module.module
-----
-
-=== `ng generate pipe [name]`
-
-會產生 Angular 的管道(Pipe)，管道通常用於轉換顯示的資料格式
-
-==== 生產檔案
-
-----
-app/
-├── ...
-├── test.pipe.ts
-└── test.pipe.spec.ts
-----
-
-=== `ng generate resolver [name]`
-
-產生路由解析器，主要功能是在進入路由前先取得資料，確保元件在顯示時已經有需要的資料
-
-==== 生成檔案
-
-----
-app/
-├── ...
-├── test.resolver.ts
-└── test.resolver.spec.ts
-----
-
-
+. 作用於全域環境上
 
 === `ng generate service`
 會產生 Angular 的服務，通常會用來實作一些商業邏輯、數據處理、HTTP請求等功能
