@@ -57,7 +57,8 @@ image::../image/databinding_Image Upscaler.jpg[四種資料綁定]
 背後原理: Angular 會將 Template 內 `[]` 括號內的屬性名稱，對應到**元件中同名稱**的屬性或變數。如果元件中沒有對應的屬性，則該屬性綁定將不起作用。
 
 NOTE: 1. 綁定的目標屬性必須是 HTML 元素所支持的標準屬性，並且沒有使用 `[]` 包覆是無法綁定的。 + 
-2. 若屬性為 自定義屬性 或 未知屬性的話需要加上attr.
+2. 若屬性為 自定義屬性 或 未知屬性的話需要加上attr. +
+3. 這個資料綁定是被Angular處理，故無法透過直接修改此屬性值來更改。
 
 .app.component.ts
 [source,javascript]
