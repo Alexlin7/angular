@@ -189,11 +189,11 @@ app/
 ----
 app/
 ├── ...
-├── test.directive.ts
-└── test.directive.spec.ts  // 單元測試用
+├── app.directive.ts
+└── app.directive.spec.ts  // 單元測試用
 ----
 
-`testDir.directive.ts`
+`app.directive.ts`
 
 [source,typescript]
 ----
@@ -231,7 +231,7 @@ export class HighlightDirective {
 ----
 app/
 ├── ...
-└── testEnum.ts
+└── app.enum.ts
 ----
 
 link:enum.html[TypeScript列舉介紹與問題]
@@ -363,8 +363,8 @@ ng serve --configuration=testenv
 ----
 app/
 ├── ...
-├── test.guard.ts
-└── test.guard.spec.ts // 單元測試用
+├── app.guard.ts
+└── app.guard.spec.ts // 單元測試用
 ----
 
 [[interface]]
@@ -375,7 +375,7 @@ app/
 ----
 app/
 ├── ...
-└── test.interface.ts
+└── app.interface.ts
 ----
 
 [[library]]
@@ -424,8 +424,8 @@ your-workspace/
 ----
 app/
 ├── ...
-└── test-module/
-    └── test-module.module
+└── app-module/
+    └── app-module.module
 ----
 
 ==== library & module 總結
@@ -452,8 +452,8 @@ app/
 ----
 app/
 ├── ...
-├── test.pipe.ts
-└── test.pipe.spec.ts
+├── app.pipe.ts
+└── app.pipe.spec.ts
 ----
 
 [[resolver]]
@@ -466,8 +466,8 @@ app/
 ----
 app/
 ├── ...
-├── test.resolver.ts
-└── test.resolver.spec.ts
+├── app.resolver.ts
+└── app.resolver.spec.ts
 ----
 
 [[interceptor]]
@@ -479,8 +479,8 @@ app/
 ----
 app/
 ├── ...
-├── test.interceptor.ts
-└── test.interceptor.spec.ts // 單元測試用
+├── app.interceptor.ts
+└── app.interceptor.spec.ts // 單元測試用
 ----
 
 使用前需要先設定provider
@@ -491,7 +491,7 @@ app/
 export const appConfig: ApplicationConfig = {
     providers: [
         provideHttpClient(
-            withInterceptors([testInterceptor])
+            withInterceptors([appInterceptor])
         )
     ]
 };
@@ -501,12 +501,12 @@ export const appConfig: ApplicationConfig = {
 
 在攔截器裡新增標頭內容
 
-`test.interceptor.ts`
+`app.interceptor.ts`
 [source,typescript]
 ----
 import { HttpInterceptorFn } from '@angular/common/http';
 
-export const testInterceptor: HttpInterceptorFn = (req, next) => {
+export const appInterceptor: HttpInterceptorFn = (req, next) => {
     console.log(req);
     console.log("Interceptor is running");
     const newReq = req.clone({
@@ -529,10 +529,10 @@ export const appConfig: ApplicationConfig = {
     providers: [
         provideHttpClient(
             withInterceptors([
-                testInterceptor1,
-                testInterceptor2,
-                testInterceptor3,
-                testInterceptor4
+                appInterceptor1,
+                appInterceptor2,
+                appInterceptor3,
+                appInterceptor4
             ])
         )
     ]
@@ -540,7 +540,7 @@ export const appConfig: ApplicationConfig = {
 ----
 
 若設定多個攔截器則會按照陣列順序依序攔截request +
-testInterceptor1 -> testInterceptor2 -> testInterceptor3 -> testInterceptor4
+apptInterceptor1 -> appInterceptor2 -> appInterceptor3 -> appInterceptor4
 
 ==== interceptor & resolver 總結
 
@@ -569,8 +569,8 @@ testInterceptor1 -> testInterceptor2 -> testInterceptor3 -> testInterceptor4
 ----
 app/
 ├── ...
-├── test.service.ts
-└── test.service.spec.ts
+├── app.service.ts
+└── app.service.spec.ts
 ----
 
 [[service-worker]]
@@ -601,7 +601,7 @@ your-workspace/
 ├── ...
 ├── src/
 |   └── app/
-|       └── test.worker.ts
+|       └── app.worker.ts
 └── tsconfig.worker.json
 ----
 
@@ -610,7 +610,7 @@ your-workspace/
 |===
 | 檔案 | 描述
 
-| test.worker.ts
+| app.worker.ts
 | **Web Worker 的主要程式檔案，運行在獨立的執行續，不會引響到主要的執行續**
 
 | tsconfig.worker.json
