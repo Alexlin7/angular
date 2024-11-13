@@ -62,3 +62,11 @@ image:../images/oninit.png[]
 在元件初始化時，通過 ngOnInit() 方法發出一個默認的過濾條件，這樣父元件在頁面加載時就可以根據這個過濾條件來顯示相關的項目。父元件在加載 WishFilterComponent 時，可以立刻獲取到初始過濾器，並應用到它的項目列表中。這樣即使用戶還沒有手動選擇過濾條件，應用也會顯示一個預設的結果。
 
 通過在 ngOnInit() 中執行初始設置、從服務中獲取數據或啟動某些操作，可以確保元件在渲染之前已經準備好了。它與 constructor() 的區別在於，constructor() 用於注入依賴，而 ngOnInit() 是專門用於元件初始化時的邏輯設置。使用 ngOnInit() 可以使代碼更具結構化，有助於保持良好的代碼組織和可維護性。
+
+讓我們回到 app.component.ts ，我們其實可以擺脫這個 getter ，取而代之的是直接在 app.component.html 中 wish-list 標簽的 wishes 屬性直接進行如下的改寫：
+
+image:../images/wish-list-property.png[]
+
+這樣 app.component.ts 中的 getter 部分就可以刪掉進而使程式碼更加簡潔。
+
+

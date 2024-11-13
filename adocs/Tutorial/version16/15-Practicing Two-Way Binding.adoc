@@ -1,0 +1,68 @@
+= Practicing Two-Way Binding
+
+這邊我們可以練習看看將 wish list 中的 items 也寫成獨立的元件，我們建立一個新的名爲 "wish-list-item" 的 compontent，並將 wish-list.component.html 改寫成如下：
+
+[source,html]
+----
+<div *ngIf="wishes.length === 0;  else showItems">
+  There are no wishes to display.
+</div>
+
+<ng-template #showItems>
+  <ul class="wish-list">
+    <wish-list-item
+      *ngFor="let wish of wishes"
+      [wishText]="wish.wishText"
+      [(fullfilled)]="wish.isComplete"
+    ></wish-list-item> 
+  </ul>
+</ng-template>
+----
+
+在 wish-list-item 元件上添加一個 wishText 屬性並將他綁定到願望的 wishText ，同時為 isComplete 屬性設定成一個雙向綁定，將其命名為 "fullfulled" 。
+
+將原先的 <li> 部分剪下後貼到 wish-list-item.component.html 並改寫如下：
+
+[source,html]
+----
+<li>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input 
+        type="checkbox" 
+        class="checkbox"
+        [checked]="fullfilled"
+        (click)="toggleFullfulled()"
+        > {{wishText}}
+    </label>
+    </div>
+</li>
+----
+
+將原先寫在 wish-list.component.ts 中的 toggleItem 方法移植到 wish-list-item.component.ts 並改寫完善如下：
+
+[source,typescript]
+----
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { WishItem } from '../../shared/models/wishItem';
+
+@Component({
+  selector: 'wish-list-item',
+  templateUrl: './wish-list-item.component.html',
+  styleUrl: './wish-list-item.component.css'
+})
+export class WishListItemComponent {
+  @Input() wishText! : string;
+
+  @Input() fullfilled! : boolean;
+  @Output() fullfilledChange = new EventEmitter<boolean>();
+
+  toggleFullfulled() {
+    this.fullfilled = !this.fullfilled;
+    this.fullfilledChange.emit(this.fullfilled)  
+  }
+}
+----
+
+對於 wishText 我們可以不使用特定值初始化，因爲該值由其父元件提供，所以用非空斷言操作符（Non-null Assertion Operator）表示 wishText 是一個非 null 屬性，定義 fullfilled 屬性時也是如此，
+
