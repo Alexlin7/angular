@@ -147,7 +147,7 @@ image::../image/signal測試.gif[展示畫面]
 參考資料:
 
 * link:https://fullstackladder.dev/blog/2023/05/07/introduction-angular-signals/[簡介Signal]
-* link:https://fullstackladder.dev/blog/2023/05/07/introduction-angular-signals/[官方文檔]
+* link:https://angular.dev/guide/signals[官方文檔] (待確)
 
 
 link:Tools.html[回上一頁]
