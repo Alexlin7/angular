@@ -29,62 +29,65 @@
 |===
 | 子指令 | 描述
 
-| https://angular.dev/cli/generate/app-shell[`app-shell`^]
+| <<app-shell,app-shell>>
 | **生成應用程式的App Shell**
 
-| https://angular.dev/cli/generate/application[`application`^]
+| <<application,application>>
 | **生成應用程式**
 
-| https://angular.dev/cli/generate/class[`class`^]
+| <<class,class>>
 | **生成類別**
 
-| https://angular.dev/cli/generate#service-command[`component`^]
+| <<component,component>>
 | **生成元件**
 
-| https://angular.dev/cli/generate/config[`config`^]
+| <<config,config>>
 | **生成Config檔**
 
-| https://angular.dev/cli/generate/directive[`directive`^]
+| <<directive,directive>>
 | **生成指令**
 
-| https://angular.dev/cli/generate/enum[`enum`^]
+| <<enum,enum>>
 | **生成列舉**
 
-| https://angular.dev/cli/generate/environments[`environments`^]
+| <<environments,environments>>
 | **生成環境檔案**
 
-| https://angular.dev/cli/generate/guard[`guard`^]
+| <<guard,guard>>
 | **生成一個路由守衛**
 
-| https://angular.dev/cli/generate/interceptor[`interceptor`^]
-| **生成攔截器**
-
-| https://angular.dev/cli/generate/interface[`interface`^]
+| <<interface,interface>>
 | **生成介面**
 
-| https://angular.dev/cli/generate/library[`library`^]
+| <<library,library>>
 | **生成函式庫**
 
-| https://angular.dev/cli/generate/module[`module`^]
+| <<module,module>>
 | **生成模組**
 
-| https://angular.dev/cli/generate/pipes[`pipe`^]
+| <<pipe,pipe>>
 | **生成管道**
 
-| https://angular.dev/cli/generate/resolver[`resolver`^]
+| <<resolver,resolver>>
 | **生成路由解析器**
 
-| https://angular.dev/cli/generate/service[`service`^]
+| <<interceptor,interceptor>>
+| **生成攔截器**
+
+| <<service,service>>
 | **生成服務**
 
-| https://angular.dev/cli/generate/service-worker[`service-worker`^]
+| <<service-worker,service-worker>>
 | **生成Service Worker**
 
-| https://angular.dev/cli/generate/web-worker[`web-worker`^]
+| <<web-worker,web-worker>>
 | **生成Web Worker**
 
 |===
 
+link:https://angular.dev/cli/generate[官方文檔]
+
+[[app-shell]]
 === `ng generate app-shell`
 
 會用來產生 app shell 元件，此元件主要用來在應用程式初始載入時快速啟動靜態渲染頁面，實現出在實際內容載入前先顯示出應用程式基本骨架給使用者看
@@ -126,6 +129,7 @@ src
 
 |===
 
+[[application]]
 === `ng generate application [name]`
 會在專案的projects資料夾下產生新的應用程式，當專案需要多應用程式時才會使用到，例如店商網站會有不同品牌的商品，但都使用相同的應用程式邏輯
 
@@ -141,6 +145,7 @@ projects/
 ----
 除了一些共用的依賴與angular配置以外基本上檔案都跟初始應用程式是一樣的
 
+[[class]]
 === `ng generate class [name]`
 分別產生class檔案與class的單元測試檔案
 
@@ -152,6 +157,7 @@ app/
 └── class.spec.ts
 ----
 
+[[component]]
 === `ng generate component [name]`
 
 產生一般的Angular元件
@@ -166,6 +172,7 @@ app/
 └── app.component.spec.ts
 ----
 
+[[config]]
 === `ng generate config`
 
 產生一些配置檔案
@@ -173,6 +180,7 @@ app/
 . karma.config.js: 用來設定單元測試環境
 . .browserslistrc: 與瀏覽器相關的相容性配置
 
+[[directive]]
 === `ng generate directive [name]` 
 
 用來生成自訂的屬性指令，此指令是用來改變DOM元素行為或是外觀
@@ -215,6 +223,7 @@ export class HighlightDirective {
 
 - 當html使用了屬性指令，便會執行元件的constructor，上述文字會變換成黃色
 
+[[enum]]
 === `ng generate enum [name]`
 會產生通用的列舉
 
@@ -227,6 +236,7 @@ app/
 
 link:enum.html[TypeScript列舉介紹與問題]
 
+[[environments]]
 === `ng generate environments`
 
 會產生 Angular 環境的配置文件，用來管理不同環境下的環境變數
@@ -337,6 +347,7 @@ ng serve --configuration=testenv
 +
 此時 `<h1>` 標籤的內容就會變成 testenv
 
+[[guard]]
 === `ng generate guard [name]`
 
 會產生 Angular 的路由防衛，用來保護路由，控制使用者是否可以訪問特定頁面
@@ -356,6 +367,18 @@ app/
 └── test.guard.spec.ts // 單元測試用
 ----
 
+[[interface]]
+=== `ng generate interface [name]`
+創建介面
+
+==== 生產檔案
+----
+app/
+├── ...
+└── test.interface.ts
+----
+
+[[library]]
 === `ng generate library [name]`
 會創建 Angular 函式庫，建立可重複使用的元件、服務或其他功能，並且可發布到 npm 提供其他專案使用
 
@@ -392,6 +415,7 @@ your-workspace/
 
 |===
 
+[[module]]
 === `ng generate module [name]`
 產生 Angular 的模組，模組是用來封裝各種元件、服務、管道等多功能集合。
 
@@ -418,6 +442,7 @@ app/
 . 應用程式內的功能分組
 . 組織和封裝相關的元件、服務、管道等
 
+[[pipe]]
 === `ng generate pipe [name]`
 
 會產生 Angular 的管道(Pipe)，管道通常用於轉換顯示的資料格式
@@ -431,6 +456,7 @@ app/
 └── test.pipe.spec.ts
 ----
 
+[[resolver]]
 === `ng generate resolver [name]`
 
 產生路由解析器，主要功能是在進入路由前先取得資料，確保元件在顯示時已經有需要的資料
@@ -444,6 +470,7 @@ app/
 └── test.resolver.spec.ts
 ----
 
+[[interceptor]]
 === `ng generate interceptor`
 
 會產生出 Angular 的請求攔截器，當應用程式發出request請求時都會先經過攔截器的處理
@@ -533,6 +560,7 @@ testInterceptor1 -> testInterceptor2 -> testInterceptor3 -> testInterceptor4
 
 . 作用於全域環境上
 
+[[service]]
 === `ng generate service`
 會產生 Angular 的服務，通常會用來實作一些商業邏輯、數據處理、HTTP請求等功能
 
@@ -545,6 +573,7 @@ app/
 └── test.service.spec.ts
 ----
 
+[[service-worker]]
 === `ng generate service-worker`
 
 用來為 Angular 添加 Service Worker 的配置，使用此指令時就會自動將Service Worker 註冊到應用程式，可以讓應用程式具有離線運行能力、快取資源、接收推送通知等 PWA (Progressive Web App) 功能。
@@ -561,6 +590,7 @@ image:../image/service-worker_test.png[service-worker_test]
 
 - `ngsw-config.json`: Service Worker的配置文件
 
+[[web-worker]]
 === `ng generate web-worker [name]`
 
 會產生Web Worker檔案，Web Worker 允許在背景執行 JavaScript 程式，不會阻塞主執行緒。
