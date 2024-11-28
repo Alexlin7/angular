@@ -1,4 +1,5 @@
 = 開發環境
+:data-uri:
 
 Angular 各版本與其相應的 Node.js、TypeScript 和 RxJS 的版本兼容性要求，如下圖所示，可以根據所使用的版本配置對應的開發環境。
 
@@ -9,13 +10,14 @@ image::./images/Versions.png[]
 本教材使用VS Code 進行 Angular 的教學。VS Code 是一款靈活且強大的編輯器，其輕量和高性能的特性結合了強大的擴展支持，適合 Angular 這樣的現代 Web 應用開發，內建 TypeScript 支持、自動補全、程式碼格式化等功能，使 Angular 開發更快速、更準確。
 
 
+
 === 套件推薦
 
 image::./images/Plugin1.png[]
 
 - Angular Language Service 主要用於增強編輯器對 Angular 模板的智能提示和錯誤檢查，提供更高效的開發體驗。
 
-- Angular Snippets (Version 18) 則提供預定義的代碼片段，幫助開發者快速創建 Angular 的基本代碼結構，節省時間，提高效率。
+- Angular Snippets (Version 18) 則提供預定義的程式碼片段，幫助開發者快速創建 Angular 的基本程式碼結構，節省時間，提高效率。
 
 image::./images/Plugin2.png[]
 
@@ -23,7 +25,7 @@ image::./images/Plugin2.png[]
 
 - Auto Rename Tag 自動重命名 HTML/XML 標籤，保持配對標籤的一致性，防止結構錯誤。
 
-- ESLint 提供代碼語法和風格檢查，幫助保持代碼質量並減少語法錯誤。
+- ESLint 提供程式碼語法和風格檢查，幫助保持程式碼質量並減少語法錯誤。
 
 接下來創建一個新的資料夾，在VS Code中打開，並藉助其自帶終端就可以進行下一步Node.js和Angular cli的安裝了。
 
@@ -31,7 +33,7 @@ image::./images/Plugin2.png[]
 
 == Node.js
 
-本教程使用的 Node 版本為20.18.0
+本課程使用的 Node 版本為20.18.0
 
 image::./images/Node-version.png[]
 
@@ -39,21 +41,35 @@ image::./images/Node-version.png[]
 
 == Angular Cli
 
-透過 npm 來下載安裝最新版本Angular Cli，本教程使用的 Angular 版本為20.18.0
+透過 npm 來下載安裝指定版本Angular Cli
 
 [source,cmd]
 ----
-npm i -g @angular/cli
+npm i @angular/cli@18.2.12
 ----
 
-若要指定版本，可再後面加上@版本號
+安裝完畢之後，就能透過npx使用ng指令:
+
+image:./images/npx-ng.png[]
+
+創建名爲 "toturial" 的 Angular 專案：
 
 [source,cmd]
 ----
-npm i -g @angular/cli@18.2.11
+npx ng new toturial
 ----
 
-安裝完畢之後，就能使用ng指令。
+進到該專案的資料夾後，接著在專案底下下載 pirme 和 primeflex:
+
+[source,cmd]
+----
+npm install primeng
+npm i primeflex
+----
+
+在專案的 angular.json 中引入所下載的 css ：
+
+image:./images/import-prime.png[]
 
 === TypeScript & RxJS
 
@@ -99,10 +115,3 @@ Angular DevTools 是專為 Angular 應用程序設計的瀏覽器開發者工具
 image::./images/Angular DevTools.png[]
 
 
-
-
-
-
-
-
-link:課程介紹.adoc[課程介紹]

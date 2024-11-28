@@ -1,5 +1,7 @@
 = 框架簡介
 
+:data-uri:
+
 Angular官方在版本14時推出了獨立元件 （Standalone Components），是一種可以獨立於 Angular 模組系統運行的元件。這意味著它不需要在某個 NgModule 中註冊，而是可以自己包含所需的依賴，通過直接導入其他元件、指令或管道來進行組織。
 
 而從 Angular 17 開始，官方建議開發者優先使用獨立元件（Standalone Components）而非傳統的 @NgModule，在默認新建的專案中將看不到以往app.module.ts檔案。
