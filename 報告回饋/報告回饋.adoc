@@ -51,7 +51,7 @@
 
 . angular生命週期其他人的資料是如何證明的(可以先不深入研究)
 . 官方設計declarations的用意與目的是甚麼?
-. defult export 有什麼?  esm是甚麼?
+. defult export 有什麼?  esm是甚麼? (done by jack) 
 . @Output的事件監聽再補充詳細一點   (done by jack) 
 . 為甚麼雙向綁定監聽器一定是click?  (done by jack)
 . 把雙向綁定[(data)]和"data"命名換成不一樣的，用做區分 (done by jack)

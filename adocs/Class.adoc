@@ -296,6 +296,12 @@ image::../image/mutiDeclar.jpg[module]
     `@NgModule` 是一個核心裝飾器，用來定義應用程式的 `Module` ，當中會宣告不同的元件、指令、服務或依賴其他的 `Module` ，實現模組化和可重用的架構。 +
     例如，創建一個 `SharedModule` ，其中包含多個可以重用的元件。
 +
+
+                          新版       v.s         舊版
+    standalone            有                     沒有
+    declaration           沒有                   有，透過declaration和export可以決定存取comppnent、pipe、directive範圍，
+
+
 [source,typescript]
 ----
 import { CommonModule } from '@angular/common';
